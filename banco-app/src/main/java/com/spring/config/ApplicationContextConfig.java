@@ -20,9 +20,9 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 
 @Configuration
-@EnableTransactionManagement
-@EnableWebMvc
-@ComponentScan(basePackages = "com.spring")
+@ComponentScan("com.spring") //tambien se podria poner asi: @ComponentScan(basePackages = "com.springmvc")
+//@EnableTransactionManagement
+//@EnableWebMvc
 public class ApplicationContextConfig extends WebMvcConfigurerAdapter{
 
 	@Bean(name = "viewResolver")
@@ -38,10 +38,10 @@ public class ApplicationContextConfig extends WebMvcConfigurerAdapter{
 	}
 	
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/static/**").addResourceLocations("/static/");
+		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 		/// registry.addResourceHandler("/css/**").addResourceLocations("/static/css/");
 	}
-
+/*
 	@Bean(name = "dataSource")
 	public DataSource getDataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
@@ -76,6 +76,6 @@ public class ApplicationContextConfig extends WebMvcConfigurerAdapter{
 
 		return transactionManager;
 	}
-	
+	*/
 	
 }

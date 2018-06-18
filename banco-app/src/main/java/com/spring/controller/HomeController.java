@@ -9,12 +9,19 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
 	
 	@RequestMapping("/")
+	public String handleRequest() throws Exception {
+		System.out.println("----Dentro del Controller222222");
+		return "index";
+	}
+	/*
+	@RequestMapping("/")
 	public ModelAndView handleRequest() throws Exception {
 
 		System.out.println("----Dentro del Controller");
 
-		ModelAndView model = new ModelAndView("home");
+		ModelAndView model = new ModelAndView("index");
 		return model;
 	}
+	*/
 
 }
