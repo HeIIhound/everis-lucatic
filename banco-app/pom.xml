@@ -13,8 +13,7 @@
 
 	<groupId>com.everis.banco-app</groupId>
 	<artifactId>banco-app</artifactId>
-	<!--   <packaging>war</packaging>  -->
-	<packaging>pom</packaging>
+	<packaging>war</packaging>
 	<name>banco-app Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	
