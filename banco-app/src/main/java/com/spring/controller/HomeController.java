@@ -10,18 +10,9 @@ public class HomeController {
 	
 	@RequestMapping("/")
 	public String handleRequest() throws Exception {
-		System.out.println("----Dentro del Controller222222");
+		System.out.println("----Dentro del Controller");
 		return "index";
 	}
-	/*
-	@RequestMapping("/")
-	public ModelAndView handleRequest() throws Exception {
-
-		System.out.println("----Dentro del Controller");
-
-		ModelAndView model = new ModelAndView("index");
-		return model;
-	}
-	*/
+	
 
 }

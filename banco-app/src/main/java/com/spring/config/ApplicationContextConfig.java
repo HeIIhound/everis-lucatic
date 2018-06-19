@@ -24,7 +24,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 //@EnableTransactionManagement
 //@EnableWebMvc
 public class ApplicationContextConfig extends WebMvcConfigurerAdapter{
-
+		
 	@Bean(name = "viewResolver")
 	public InternalResourceViewResolver getViewResolver() {
 		
@@ -37,10 +37,13 @@ public class ApplicationContextConfig extends WebMvcConfigurerAdapter{
 		return viewResolver;		
 	}
 	
+	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-		/// registry.addResourceHandler("/css/**").addResourceLocations("/static/css/");
+		
+	    
 	}
+	
 /*
 	@Bean(name = "dataSource")
 	public DataSource getDataSource() {
@@ -58,7 +61,6 @@ public class ApplicationContextConfig extends WebMvcConfigurerAdapter{
 		return properties;
 	}
 
-	// copiar para el acceso a datos
 	@Autowired
 	@Bean(name = "sessionFactory")
 	public SessionFactory getSessionFactory(DataSource dataSource) {
