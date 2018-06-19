@@ -15,11 +15,9 @@ public class ApplicationContextConfig extends WebMvcConfigurerAdapter{
 	
     @Bean(name = "viewResolver")
     public InternalResourceViewResolver getViewResolver() {
-    	System.out.println("Hola entro 1");
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setPrefix("/WEB-INF/view/");
         viewResolver.setSuffix(".jsp");
-        System.out.println("Hola salgo 1");
         return viewResolver;
     }
     

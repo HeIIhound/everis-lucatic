@@ -1,14 +1,13 @@
-package spring.control;
+package spring.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class Controlador {
+public class InitController {
 
 	@RequestMapping("/")
 	public String initForm() {
-		System.out.println("Hola entro 2");
-		return "index";
+		return "login";
 	}
 }
