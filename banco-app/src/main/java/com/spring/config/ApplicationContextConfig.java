@@ -22,7 +22,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @ComponentScan("com.spring") //tambien se podria poner asi: @ComponentScan(basePackages = "com.springmvc")
 //@EnableTransactionManagement
-//@EnableWebMvc
+@EnableWebMvc
 public class ApplicationContextConfig extends WebMvcConfigurerAdapter{
 		
 	@Bean(name = "viewResolver")
