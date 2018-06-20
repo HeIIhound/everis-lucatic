@@ -32,13 +32,13 @@
 <body>
 	
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('resources/images/bg-01.jpg');">
+		<div class="container-login100" style="background-image: url('resources/images/fondo.jpg');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 				<form class="login100-form validate-form">
 				<span class="login100-form-title p-b-10">
 					Inicio de sesión
 				</span>
-				<span class="container-login10011" style="background-image: url('resources/images/Inversis.png');"></span>
+				<span class="container-login10011" style="background-image: url('resources/images/inversisa.png');"></span>
 				
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate = "Es necesario un usuario">
