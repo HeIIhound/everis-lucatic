@@ -1,6 +1,5 @@
 package spring.configuration;
 
-
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
@@ -13,12 +12,12 @@ public class SpringWebAppInitializer implements WebApplicationInitializer {
 
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
-        AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
-        appContext.register(ApplicationContextConfig.class);
-        
-        ServletRegistration.Dynamic dispatcher = servletContext.addServlet(
-                "SpringDispatcher", new DispatcherServlet(appContext));
-        dispatcher.addMapping("/");
+		AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
+		appContext.register(ApplicationContextConfig.class);
+
+		ServletRegistration.Dynamic dispatcher = servletContext.addServlet("SpringDispatcher",
+				new DispatcherServlet(appContext));
+		dispatcher.addMapping("/");
 	}
 
 }

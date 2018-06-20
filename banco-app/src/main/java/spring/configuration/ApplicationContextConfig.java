@@ -13,7 +13,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @ComponentScan(basePackages="spring")
 public class ApplicationContextConfig extends WebMvcConfigurerAdapter{
 	
-    @Bean(name = "viewResolver")
+    @Bean
     public InternalResourceViewResolver getViewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setPrefix("/WEB-INF/view/");
