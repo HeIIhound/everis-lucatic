@@ -10,7 +10,7 @@
 	OF ANY KIND, either express or implied. See the License for the specific 
 	language governing permissions and limitations under the License. --><!-- Note: A "Server" is not itself a "Container", so you may not define 
 	subcomponents such as "Valves" at this level. Documentation at /docs/config/server.html -->
-<Server port="8005" shutdown="SHUTDOWN">
+	<Server port="8005" shutdown="SHUTDOWN">
 	<Listener
 		className="org.apache.catalina.startup.VersionLoggerListener" />
 	<!-- Security listener. Documentation at /docs/config/listeners.html <Listener 
@@ -120,7 +120,7 @@
 					Note: The pattern used is equivalent to using pattern="common" -->
 				<Valve className="org.apache.catalina.valves.AccessLogValve"
 					directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b"
-					prefix="localhost_access_log" suffix=".txt" />
+					prefix="localhost_access_log" suffix=".txt" />	
 
 			</Host>
 		</Engine>
