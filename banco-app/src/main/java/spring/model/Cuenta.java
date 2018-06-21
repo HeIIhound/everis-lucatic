@@ -18,7 +18,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import static javax.persistence.GenerationType.IDENTITY;
 
-
 @Entity
 @Table(name = "cuenta", catalog = "banco")
 public class Cuenta implements java.io.Serializable {
@@ -33,7 +32,7 @@ public class Cuenta implements java.io.Serializable {
 	private String nomBanco;
 	private BigDecimal saldo;
 	private Date fechaDeAlta;
-	private Set movimientos = new HashSet(0);
+	private Set<Movimiento> movimientos = new HashSet<Movimiento>(0);
 
 	public Cuenta() {
 	}
@@ -47,7 +46,7 @@ public class Cuenta implements java.io.Serializable {
 	}
 
 	public Cuenta(Usuario usuario, String numCuenta, String nomBanco, BigDecimal saldo, Date fechaDeAlta,
-			Set movimientos) {
+			Set<Movimiento> movimientos) {
 		this.usuario = usuario;
 		this.numCuenta = numCuenta;
 		this.nomBanco = nomBanco;
@@ -58,6 +57,7 @@ public class Cuenta implements java.io.Serializable {
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
+	
 
 	@Column(name = "id", unique = true, nullable = false)
 	public Integer getId() {
@@ -116,11 +116,11 @@ public class Cuenta implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cuenta")
-	public Set getMovimientos() {
+	public Set<Movimiento> getMovimientos() {
 		return this.movimientos;
 	}
 
-	public void setMovimientos(Set movimientos) {
+	public void setMovimientos(Set<Movimiento> movimientos) {
 		this.movimientos = movimientos;
 	}
 

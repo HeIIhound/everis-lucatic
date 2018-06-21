@@ -19,6 +19,10 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Table(name = "usuariologin", catalog = "banco", uniqueConstraints = @UniqueConstraint(columnNames = "user"))
 public class Usuariologin implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private Usuario usuario;
 	private String user;

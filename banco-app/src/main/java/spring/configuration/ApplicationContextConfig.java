@@ -42,42 +42,42 @@ public class ApplicationContextConfig extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
 
-//	@Bean(name = "dataSource")
-//	public DataSource getDataSource() {
-//		BasicDataSource dataSource = new BasicDataSource();
-//		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-//		dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/banco");
-//		dataSource.setUsername("root");
-//		dataSource.setPassword("");
-//
-//		return dataSource;
-//	}
-//
-//	private Properties getHibernateProperties() {
-//		Properties properties = new Properties();
-//		properties.put("hibernate.show_sql", "true");
-//		properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-//		return properties;
-//	}
-//
-//	@Autowired
-//	@Bean(name = "sessionFactory")
-//	public SessionFactory getSessionFactory(DataSource dataSource) {
-//		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
-//		sessionBuilder.addProperties(getHibernateProperties());
-//		sessionBuilder.addAnnotatedClasses(Cuenta.class);
-//		sessionBuilder.addAnnotatedClasses(Movimiento.class);
-//		sessionBuilder.addAnnotatedClasses(Usuario.class);
-//		sessionBuilder.addAnnotatedClasses(Usuariologin.class);
-//		return sessionBuilder.buildSessionFactory();
-//	}
-//
-//	@Autowired
-//	@Bean(name = "transactionManager")
-//	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
-//		HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
-//
-//		return transactionManager;
-//	}
+	@Bean(name = "dataSource")
+	public DataSource getDataSource() {
+		BasicDataSource dataSource = new BasicDataSource();
+		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+		dataSource.setUrl("jdbc:mysql://127.0.0.1:3307/banco");
+		dataSource.setUsername("root");
+		dataSource.setPassword("");
+
+		return dataSource;
+	}
+
+	private Properties getHibernateProperties() {
+		Properties properties = new Properties();
+		properties.put("hibernate.show_sql", "true");
+		properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
+		return properties;
+	}
+
+	@Autowired
+	@Bean(name = "sessionFactory")
+	public SessionFactory getSessionFactory(DataSource dataSource) {
+		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
+		sessionBuilder.addProperties(getHibernateProperties());
+		sessionBuilder.addAnnotatedClasses(Cuenta.class);
+		sessionBuilder.addAnnotatedClasses(Movimiento.class);
+		sessionBuilder.addAnnotatedClasses(Usuario.class);
+		sessionBuilder.addAnnotatedClasses(Usuariologin.class);
+		return sessionBuilder.buildSessionFactory();
+	}
+
+	@Autowired
+	@Bean(name = "transactionManager")
+	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
+		HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
+
+		return transactionManager;
+	}
 
 }

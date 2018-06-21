@@ -15,12 +15,16 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Table(name = "usuario", catalog = "banco", uniqueConstraints = @UniqueConstraint(columnNames = "dni"))
 public class Usuario implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String nombre;
 	private String apellido;
 	private String dni;
-	private Set usuariologins = new HashSet(0);
-	private Set cuentas = new HashSet(0);
+	private Set<Usuariologin> usuariologins = new HashSet<>(0);
+	private Set<Cuenta> cuentas = new HashSet<Cuenta>(0);
 
 	public Usuario() {
 	}
@@ -31,7 +35,7 @@ public class Usuario implements java.io.Serializable {
 		this.dni = dni;
 	}
 
-	public Usuario(String nombre, String apellido, String dni, Set usuariologins, Set cuentas) {
+	public Usuario(String nombre, String apellido, String dni, Set<Usuariologin> usuariologins, Set<Cuenta> cuentas) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
@@ -79,20 +83,20 @@ public class Usuario implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
-	public Set getUsuariologins() {
+	public Set<Usuariologin> getUsuariologins() {
 		return this.usuariologins;
 	}
 
-	public void setUsuariologins(Set usuariologins) {
+	public void setUsuariologins(Set<Usuariologin> usuariologins) {
 		this.usuariologins = usuariologins;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
-	public Set getCuentas() {
+	public Set<Cuenta> getCuentas() {
 		return this.cuentas;
 	}
 
-	public void setCuentas(Set cuentas) {
+	public void setCuentas(Set<Cuenta> cuentas) {
 		this.cuentas = cuentas;
 	}
 
