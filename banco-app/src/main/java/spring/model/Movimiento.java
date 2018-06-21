@@ -58,7 +58,7 @@ public class Movimiento implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idCuenta", nullable = false)
+	@JoinColumn(name = "idcuenta", nullable = false)
 	public Cuenta getCuenta() {
 		return this.cuenta;
 	}
@@ -68,7 +68,7 @@ public class Movimiento implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "fechaOperacion", nullable = false, length = 19)
+	@Column(name = "fechaoperacion", nullable = false, length = 19)
 	public Date getFechaOperacion() {
 		return this.fechaOperacion;
 	}
@@ -86,7 +86,7 @@ public class Movimiento implements java.io.Serializable {
 		this.cantidad = cantidad;
 	}
 
-	@Column(name = "tipoOperacion", length = 45)
+	@Column(name = "tipooperacion", length = 45)
 	public String getTipoOperacion() {
 		return this.tipoOperacion;
 	}

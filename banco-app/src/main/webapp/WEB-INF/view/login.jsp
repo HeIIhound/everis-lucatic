@@ -54,10 +54,10 @@
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-18"
-						data-validate="contraseña requerida">
-						<span class="label-input100">Contraseña</span> <input
+						data-validate="contraseï¿½a requerida">
+						<span class="label-input100">Contraseï¿½a</span> <input
 							class="input100" type="password" name="pass"
-							placeholder="Introduzca una contraseña"> <span
+							placeholder="Introduzca una contraseï¿½a"> <span
 							class="focus-input100"></span>
 					</div>
 
@@ -69,12 +69,12 @@
 						</div>
 
 						<div>
-							<a href="#" class="txt1"> ¿Olvido su contraseña? </a>
+							<a href="#" class="txt1"> ï¿½Olvido su contraseï¿½a? </a>
 						</div>
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">Iniciar sesion</button>
+						<a class="login100-form-btn" href="inicio"><button>Iniciar Sesion</button></a>
 					</div>
 				</form>
 			</div>

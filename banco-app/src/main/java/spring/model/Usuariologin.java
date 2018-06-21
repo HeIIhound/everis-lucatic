@@ -52,7 +52,7 @@ public class Usuariologin implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idUser", nullable = false)
+	@JoinColumn(name = "iduser", nullable = false)
 	public Usuario getUsuario() {
 		return this.usuario;
 	}
@@ -80,7 +80,7 @@ public class Usuariologin implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "ultimoAcceso", nullable = false, length = 19)
+	@Column(name = "ultimoacceso", nullable = false, length = 19)
 	public Date getUltimoAcceso() {
 		return this.ultimoAcceso;
 	}

@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -57,7 +56,6 @@ public class Cuenta implements java.io.Serializable {
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
-	
 
 	@Column(name = "id", unique = true, nullable = false)
 	public Integer getId() {
@@ -69,7 +67,7 @@ public class Cuenta implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "idUser", nullable = false)
+	@JoinColumn(name = "iduser", nullable = false)
 	public Usuario getUsuario() {
 		return this.usuario;
 	}
@@ -78,7 +76,7 @@ public class Cuenta implements java.io.Serializable {
 		this.usuario = usuario;
 	}
 
-	@Column(name = "numCuenta", nullable = false, length = 35)
+	@Column(name = "numcuenta", nullable = false, length = 35)
 	public String getNumCuenta() {
 		return this.numCuenta;
 	}
@@ -87,7 +85,7 @@ public class Cuenta implements java.io.Serializable {
 		this.numCuenta = numCuenta;
 	}
 
-	@Column(name = "nomBanco", nullable = false, length = 50)
+	@Column(name = "nombanco", nullable = false, length = 50)
 	public String getNomBanco() {
 		return this.nomBanco;
 	}
@@ -106,7 +104,7 @@ public class Cuenta implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "fechaDeAlta", nullable = false, length = 19)
+	@Column(name = "fechadealta", nullable = false, length = 19)
 	public Date getFechaDeAlta() {
 		return this.fechaDeAlta;
 	}
