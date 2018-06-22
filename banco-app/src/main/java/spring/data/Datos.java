@@ -4,6 +4,7 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import spring.model.Usuariologin;
 
@@ -23,15 +24,10 @@ public class Datos implements IDatos {
 
 	@Override
 	public Usuariologin getUsuariologin(String user) {
-		System.out.println("1");
-		String hql = "from usuariologin where user= :user";
-		System.out.println("2");
+		String hql = "from Usuariologin where user= :user";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		System.out.println("3");
 		query.setParameter("user", user);
-		System.out.println("4");
 		Usuariologin usuario = (Usuariologin) query.uniqueResult();
-		System.out.println("5");
 		return usuario;
 	}
 

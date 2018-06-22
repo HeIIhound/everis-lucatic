@@ -40,11 +40,9 @@ public class InitController {
 	//pagina inicio
 	@RequestMapping(value = "/inicio")
 	public ModelAndView inicio(HttpServletRequest request) throws Exception {
-		Usuariologin usuariologin;
-		String user;
-		String pass;
+		Usuariologin u = userService.getUsuariologin("fpachecs");
+		System.out.println(u.getPass());
 		ModelAndView model = new ModelAndView("inicio");
-		model.addObject("Usuariologin", new Usuariologin());
 		return model;
 	}
 }
