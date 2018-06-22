@@ -18,37 +18,38 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import com.spring.dao.UsuarioDAO;
+import com.spring.model.Cuenta;
+import com.spring.model.Movimiento;
+import com.spring.model.Usuario;
+import com.spring.model.Usuariologin;
 
 @Configuration
-@ComponentScan("com.spring") //tambien se podria poner asi: @ComponentScan(basePackages = "com.springmvc")
-//@EnableTransactionManagement
+@ComponentScan("com.spring") // tambien se podria poner asi: @ComponentScan(basePackages = "com.springmvc")
+@EnableTransactionManagement
 @EnableWebMvc
-public class ApplicationContextConfig extends WebMvcConfigurerAdapter{
-		
+public class ApplicationContextConfig extends WebMvcConfigurerAdapter {
+
 	@Bean(name = "viewResolver")
 	public InternalResourceViewResolver getViewResolver() {
-		
-		System.out.println("----Dentro de Aplication config");
-
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 		viewResolver.setPrefix("/WEB-INF/views/");
 		viewResolver.setSuffix(".jsp");
-		System.out.println("----Aplication config ACABADO");
-		return viewResolver;		
+		return viewResolver;
 	}
-	
+
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");	    
+		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
-	
-/*
+
 	@Bean(name = "dataSource")
 	public DataSource getDataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/agenda");
+		dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/banco");
 		dataSource.setUsername("root");
+
 		return dataSource;
 	}
 
@@ -64,8 +65,11 @@ public class ApplicationContextConfig extends WebMvcConfigurerAdapter{
 	public SessionFactory getSessionFactory(DataSource dataSource) {
 		LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
 		sessionBuilder.addProperties(getHibernateProperties());
-		//sessionBuilder.addAnnotatedClasses(Empleados.class);
-	
+		sessionBuilder.addAnnotatedClasses(Cuenta.class);
+		sessionBuilder.addAnnotatedClasses(Movimiento.class);
+		sessionBuilder.addAnnotatedClasses(Usuario.class);
+		sessionBuilder.addAnnotatedClasses(Usuariologin.class);
+//		sessionBuilder.addAnnotatedClasses(UsuarioDAO.class);
 		return sessionBuilder.buildSessionFactory();
 	}
 
@@ -76,6 +80,5 @@ public class ApplicationContextConfig extends WebMvcConfigurerAdapter{
 
 		return transactionManager;
 	}
-	*/
-	
+
 }

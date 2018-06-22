@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login V4</title>
+	<title>BancoApp  - Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -55,10 +55,8 @@
 										
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
-							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
-								Login
-							</button>
+							<div class="login100-form-bgbtn"></div>						
+							<a class="login100-form-btn" href="login">Iniciar sesión</a>							
 						</div>
 					</div>
 				</form>

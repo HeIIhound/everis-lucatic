@@ -16,13 +16,15 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="movimiento"
-    ,catalog="banco"
-)
+@Table(name="movimiento",catalog="banco")
 public class Movimiento  implements Serializable {
 
 
-     private Integer id;
+     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer id;
      private Cuenta cuenta;
      private Date fechaOperacion;
      private BigDecimal cantidad;

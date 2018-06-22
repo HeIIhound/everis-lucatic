@@ -14,7 +14,6 @@ public class SpringWebAppInitializer implements WebApplicationInitializer {
 
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
-		System.out.println("----Dentro de Spring web aplication");
 		AnnotationConfigWebApplicationContext appContext = new AnnotationConfigWebApplicationContext();
 		appContext.register(ApplicationContextConfig.class);
 
