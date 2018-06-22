@@ -31,6 +31,11 @@ public class Usuariologin implements java.io.Serializable {
 
 	public Usuariologin() {
 	}
+	
+	public Usuariologin(String user, String pass) {
+		this.user = user;
+		this.pass = pass;
+	}
 
 	public Usuariologin(Usuario usuario, String user, String pass, Date ultimoAcceso) {
 		this.usuario = usuario;

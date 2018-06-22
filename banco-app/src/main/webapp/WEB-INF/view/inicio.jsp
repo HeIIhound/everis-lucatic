@@ -26,7 +26,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <img src="<c:url value="/resources/banco-inversis.png" />" width="250" height="50">
+          <img src="<c:url value="/resources/inicio/images/banco-inversis.png" />" width="250" height="50">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
