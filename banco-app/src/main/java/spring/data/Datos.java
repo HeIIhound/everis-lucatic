@@ -27,9 +27,11 @@ public class Datos implements IDatos {
 		String hql = "from usuariologin where user= :user";
 		System.out.println("2");
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		System.out.println("3");
 		query.setParameter("user", user);
+		System.out.println("4");
 		Usuariologin usuario = (Usuariologin) query.uniqueResult();
-
+		System.out.println("5");
 		return usuario;
 	}
 
