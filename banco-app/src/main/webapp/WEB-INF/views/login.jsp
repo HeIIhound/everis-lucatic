@@ -1,4 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,8 +35,8 @@
 	
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('resources/images/fondo.jpg');">
-			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-				<form class="login100-form validate-form">
+			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">				
+				<form:form class="login100-form validate-form" method="post" action="login" modelAttribute="Usuariologin">
 				<span class="login100-form-title p-b-10">
 					Inicio de sesión
 				</span>
@@ -43,23 +45,23 @@
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate = "Es necesario un usuario">
 						<span class="label-input100">Nombre de usuario</span>
-						<input class="input100" type="text" name="username" placeholder="Introduzca un usuario">
+						<form:input class="input100" type="text" path="user" name="user" placeholder="Introduzca un usuario" />
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Es necesaria una contraseña">
 						<span class="label-input100">Contraseña</span>
-						<input class="input100" type="password" name="pass" placeholder="Introduzca una contraseña">
+						<form:input class="input100" type="password" path="pass" name="pass" placeholder="Introduzca una contraseña" />
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
 										
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
-							<div class="login100-form-bgbtn"></div>						
-							<a class="login100-form-btn" href="login">Iniciar sesión</a>							
+							<div class="login100-form-bgbtn"></div>										
+							<button class="login100-form-btn" type="submit">login</button>
 						</div>
 					</div>
-				</form>
+				</form:form>
 			</div>
 		</div>
 	</div>

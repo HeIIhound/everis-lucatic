@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,7 +14,6 @@
      
   </head>
   <body>   
-    
     <div class="probootstrap-page-wrapper">
       <!-- Fixed navbar -->      
      
@@ -24,13 +24,13 @@
         </a>
           
             <ul class="nav navbar-nav navbar-right">              
-              <li><a>Usuario</a></li>
+              <li><a>${Cliente.Nombre}</a></li>
               <li class="dropdown">
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">Operaciones</a>
                 <ul class="dropdown-menu">
-                  <li><a href="about.html">About Us</a></li>
-                  <li><a href="courses.html">Courses</a></li>
-                  <li><a href="course-single.html">Course Single</a></li>
+                  <li><a href="about.html">Retirar</a></li>
+                  <li><a href="courses.html">Depositar</a></li>
+                  <li><a href="course-single.html">Movimientos</a></li>
                   <li><a href="gallery.html">Gallery</a></li>              
      
                 </ul>

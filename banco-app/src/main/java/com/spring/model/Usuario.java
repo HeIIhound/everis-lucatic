@@ -101,4 +101,12 @@ public class Usuario implements java.io.Serializable {
 		this.cuentas = cuentas;
 	}
 
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni
+				+ ", usuariologins=" + usuariologins + ", cuentas=" + cuentas + "]";
+	}
+	
+	
+
 }
