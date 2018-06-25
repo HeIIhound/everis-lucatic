@@ -47,20 +47,20 @@
 			<div class="wrap-login100">
 				<div class="login100-form-title"></div>
 
-				<form class="login100-form validate-form" action="inicio"
-					method="post">
+				<form:form class="login100-form validate-form" action="inicio"
+					method="post" modelAttribute="Usuariologin">
 					<div class="wrap-input100 validate-input m-b-26"
 						data-validate="Usuario requerido">
-						<span class="label-input100">Usuario</span> <input
-							class="input100" type="text" name="username"
-							placeholder="Introduzca un usuario" /> <span
+						<span class="label-input100">Usuario</span> <form:input path="user"
+							class="input100" type="text"
+							placeholder="Introduzca un usuario"/> <span
 							class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-18"
 						data-validate="contraseña requerida">
-						<span class="label-input100">Contraseña</span> <input
-							class="input100" type="password" name="pass"
+						<span class="label-input100">Contraseña</span> <form:input path="pass"
+							class="input100" type="password"
 							placeholder="Introduzca una contraseña" /> <span
 							class="focus-input100"></span>
 					</div>
@@ -73,15 +73,15 @@
 						</div>
 
 						<div>
-							<a href="#" class="txt1">¿Olvido su contraseña? </a>
+							<a href="--" class="txt1">¿Olvido su contraseña? </a>
 						</div>
 					</div>
 
 					<div class="container-login100-form-btn">
-						<!-- 						<a class="login100-form-btn" href="inicio"><button>Iniciar Sesion</button></a> -->
-						<a class="login100-form-btn" href="inicio">Iniciar Sesion</a>
+												<button type="submit" class="login100-form-btn">Iniciar Sesion</button>
+<!-- 						<a class="login100-form-btn" type="submit" href="inicio">Iniciar Sesion</a> -->
 					</div>
-				</form>
+				</form:form>
 			</div>
 		</div>
 	</div>

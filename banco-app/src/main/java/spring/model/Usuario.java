@@ -26,7 +26,7 @@ public class Usuario implements java.io.Serializable {
 	private String apellido;
 	private String dni;
 	private Set<Usuariologin> usuariologins = new HashSet<>(0);
-	private Set<Cuenta> cuentas = new HashSet<Cuenta>(0);
+	private Set<Cuenta> cuentas = new HashSet<>(0);
 
 	public Usuario() {
 	}

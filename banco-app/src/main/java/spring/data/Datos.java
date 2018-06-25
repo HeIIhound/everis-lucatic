@@ -1,11 +1,15 @@
 package spring.data;
 
+import java.util.List;
+
+import javax.transaction.Transactional;
+
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
+import spring.model.Usuario;
 import spring.model.Usuariologin;
 
 @Repository
@@ -23,12 +27,59 @@ public class Datos implements IDatos {
 	}
 
 	@Override
-	public Usuariologin getUsuariologin(String user) {
-		String hql = "from Usuariologin where user= :user";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setParameter("user", user);
-		Usuariologin usuario = (Usuariologin) query.uniqueResult();
-		return usuario;
+	@Transactional
+	public Boolean login(Usuariologin usuariologin) {
+
+		Query query = sessionFactory.getCurrentSession().createQuery("from Usuariologin");
+		@SuppressWarnings("unchecked")
+		List<Usuariologin> list = query.list();
+
+		Boolean login = false;
+
+		for (Usuariologin u : list) {
+
+			if (usuariologin.getUser().equals(u.getUser()) && usuariologin.getPass().equals(u.getPass())) {
+				login = true;
+			}
+		}
+		return login;
 	}
 
+	@Override
+	@Transactional
+	public Usuariologin getUsuariologin(Usuariologin usuariologin) {
+
+		Usuariologin usuariolog = new Usuariologin();
+
+		Query query = sessionFactory.getCurrentSession().createQuery("from Usuariologin");
+		@SuppressWarnings("unchecked")
+		List<Usuariologin> list = query.list();
+
+		for (Usuariologin u : list) {
+
+			if (usuariologin.getUser().equals(u.getUser()) && usuariologin.getPass().equals(u.getPass())) {
+				usuariolog = u;
+			}
+		}
+		return usuariolog;
+	}
+
+	@Override
+	@Transactional
+	public Usuario getUsuario(Usuariologin usuariologin) {
+
+		Usuario usuario = new Usuario();
+
+		Query query = sessionFactory.getCurrentSession().createQuery("from Usuario");
+		@SuppressWarnings("unchecked")
+		List<Usuario> list = query.list();
+
+		for (Usuario u : list) {
+
+			if (u.getId().equals(usuariologin.getId())) {
+				usuario = u;
+			}
+		}
+		return usuario;
+	}
 }

@@ -3,8 +3,8 @@ package spring;
 //import org.hibernate.SessionFactory;
 //import org.springframework.beans.factory.annotation.Autowired;
 
-import spring.data.Datos;
-import spring.model.Usuariologin;
+//import spring.data.Datos;
+//import spring.model.Usuariologin;
 //import spring.data.Data;
 //import spring.model.Usuariologin;
 
@@ -14,12 +14,12 @@ public class Prueba {
 		// TODO Auto-generated method stub
 
 
-		Datos data = new Datos();
+//		Datos data = new Datos();
 
 
-		Usuariologin user = data.getUsuariologin("fpachecs");
+//		Usuariologin user = data.getUsuariologin("fpachecs");
 
-		System.out.println(user.getUser());
+//		System.out.println(user.getUser());
 		
 	}
 
