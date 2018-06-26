@@ -18,7 +18,6 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import com.spring.dao.UsuarioDAO;
 import com.spring.model.Cuenta;
 import com.spring.model.Movimiento;
 import com.spring.model.Usuario;

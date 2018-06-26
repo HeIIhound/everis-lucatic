@@ -1,5 +1,7 @@
 package com.spring.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -33,16 +35,26 @@ public class LoginController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView inicio(@ModelAttribute Usuariologin user) throws Exception {
-
 		if (IUsuarioDAO.comprobarUsuario(user) == true) {
-			Usuario Cliente = IUsuarioDAO.buscarCliente(IUsuarioDAO.buscarUsuario(user));
-			ModelAndView model = new ModelAndView("cuentas");
-			model.addObject("Cliente", Cliente);
+			Usuario cliente = IUsuarioDAO.buscarCliente(IUsuarioDAO.buscarUsuario(user));
+			List<Cuenta> listacuentas = IUsuarioDAO.buscarCuenta(IUsuarioDAO.buscarUsuario(user));
+			ModelAndView model = new ModelAndView("inicio");
+			model.addObject("cliente", cliente);
+			model.addObject("listacuentas", listacuentas);
 			return model;
 		} else {
 			ModelAndView model = new ModelAndView("redirect:/");
+			String msj = "El usuario no existe";
+			model.addObject(msj);
 			return model;
 		}
+	}
+	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public ModelAndView inicio() throws Exception {		
+			ModelAndView model = new ModelAndView("login");
+			//model.addObject("cliente", cliente);
+			return model;
 	}
 
 }

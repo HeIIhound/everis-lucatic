@@ -15,22 +15,22 @@
 	<packaging>war</packaging>
 	<name>banco-app Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	
+
 	<properties>
 		<java-version>1.8</java-version>
 		<org.springframework-version>4.3.8.RELEASE</org.springframework-version>
 		<org.hibernate-version>4.3.11.Final</org.hibernate-version>
 	</properties>
-	
+
 	<dependencies>
-	
-			<!-- Spring -->
+
+		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
@@ -42,7 +42,7 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
@@ -50,15 +50,15 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<!-- Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>${org.hibernate-version}</version>
 		</dependency>
-					
-		<!-- Servlet -->
+
+		<!-- Servlet -->		
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -74,41 +74,48 @@
 		<dependency>
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
-			<version>1.2</version>		
+			<version>1.2</version>
 		</dependency>
-	
+		
+		<!-- javaee -->
+		<dependency>
+		    <groupId>javax</groupId>
+		    <artifactId>javaee-api</artifactId>
+		    <version>6.0</version>
+		    <scope>provided</scope>
+		</dependency>
+
 		<!-- Apache Database Connection Pool -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-dbcp2</artifactId>
 			<version>2.0</version>
 		</dependency>
-  	
+
 		<!-- MySQL JDBC Driver -->
 		<dependency>
-	    	<groupId>mysql</groupId>
-    		<artifactId>mysql-connector-java</artifactId>
-    		<version>5.1.30</version>		
-		</dependency> 
-		
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.30</version>
+		</dependency>
+
 		<!-- TEST -->
 		<dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>4.3.0.RELEASE</version>
-            <scope>test</scope>
-        </dependency>        
-        <dependency>
-		    <groupId>junit</groupId>
-		    <artifactId>junit</artifactId>
-		    <version>4.12</version>
-		    <scope>test</scope>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.3.0.RELEASE</version>
+			<scope>test</scope>
 		</dependency>
-		
-		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
-	
+
 	<build>
 		<finalName>banco-app</finalName>
 	</build>
+	
 </project>

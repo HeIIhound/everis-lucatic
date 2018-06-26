@@ -31,8 +31,7 @@ public class UsuarioDAO {
 				"from Usuariologin where user ='" + User.getUser() + "' AND pass='" + User.getPass() + "'");
 		@SuppressWarnings("unchecked")
 		List<Usuariologin> ListaUsuarios = query.list();
-
-		for (Usuariologin u : ListaUsuarios) {
+		for (int i = 0; i < ListaUsuarios.size();) {
 			return true;
 		}
 		return false;
@@ -40,31 +39,23 @@ public class UsuarioDAO {
 
 	@Transactional
 	public Usuariologin buscarUsuario(Usuariologin User) {
-		System.out.println("-----------Lega al buscarUsuario");
 		Query query = sessionFactory.getCurrentSession().createQuery(
 				"from Usuariologin where user ='" + User.getUser() + "' AND pass='" + User.getPass() + "'");
 		Usuariologin Usuariolog = (Usuariologin) query.uniqueResult();
-		System.out.println(Usuariolog.getUser());
-		System.out.println(Usuariolog.getId());
-		System.out.println("-----------deberia haber mostrado usuario encontrado");
 		return Usuariolog;
-
 	}
 
 	@Transactional
 	public Usuario buscarCliente(Usuariologin User) {
-		System.out.println("-----------Lega al buscarCliente");
-		System.out.println(User.getId());
 		Query query = sessionFactory.getCurrentSession().createQuery("from Usuario where id ='" + User.getId() + "'");
-		if (query.uniqueResult() != null) {
-			System.out.println("query con resul");
-		} else {
-			System.out.println("query NO resul");
-		}
 		Usuario Cliente = (Usuario) query.uniqueResult();
-		System.out.println(Cliente.getNombre());
-		System.out.println(Cliente.getApellido());
-		System.out.println("-----------deberia haber mostrado Cliente encontrado");
 		return Cliente;
+	}
+	
+	@Transactional
+	public List<Cuenta> buscarCuenta(Usuariologin User) {
+		Query query = sessionFactory.getCurrentSession().createQuery("from Cuenta where idUser ='" + User.getId() + "'");
+		List<Cuenta> ListaCuentas = (List<Cuenta>) query.list();
+		return ListaCuentas;
 	}
 }
