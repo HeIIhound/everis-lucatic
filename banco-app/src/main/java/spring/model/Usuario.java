@@ -93,7 +93,7 @@ public class Usuario implements java.io.Serializable {
 		this.usuariologins = usuariologins;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "usuario")
 	public Set<Cuenta> getCuentas() {
 		return this.cuentas;
 	}

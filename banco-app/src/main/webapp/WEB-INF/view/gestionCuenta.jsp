@@ -45,6 +45,7 @@
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item active"><pre><a class="nav-link">Bienvenido:  ${usuario.nombre} ${usuario.apellido}
 					</a></pre></li>
+					<li class="nav-item active"><pre><a class="nav-link">Menu</a></pre></li>
 					<li class="nav-item active"><a class="nav-link" href="http://localhost:8080/banco-app/">salir</a></li>
 				</ul>
 			</div>
@@ -58,11 +59,13 @@
     padding-right: 300px;
     text-align: -webkit-center;
 ">
-			<strong style="padding-left: 220px;">Cuentas Disponibles</strong>
-			<pre>
-			<c:forEach items="${c}" var="c">
-			<pre><a href="gestion?id=${c.id}">${c.numCuenta}</a>                                              ${c.saldo}</pre>
-			</c:forEach></pre>
+			<strong style="padding-left: 100px;">Cuentas Seleccionada</strong>
+			
+			<pre>saldo:                   cantidad disponible
+				 cuenta:                  numero de cuenta
+				 
+				 <a class="nav-link" href="http://localhost:8080/banco-app/inicio">Volver</a>
+				 </pre>
 	</div>
 	<!-- /.container -->
 
