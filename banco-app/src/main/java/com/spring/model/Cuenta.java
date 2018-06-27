@@ -66,7 +66,7 @@ public class Cuenta implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idUser", nullable = false)
 	public Usuario getUsuario() {
 		return this.usuario;
@@ -113,7 +113,7 @@ public class Cuenta implements java.io.Serializable {
 		this.fechaDeAlta = fechaDeAlta;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "cuenta")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "cuenta")
 	public Set<Movimiento> getMovimientos() {
 		return this.movimientos;
 	}
@@ -124,7 +124,7 @@ public class Cuenta implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "Cuenta [id=" + id + ", usuario=" + usuario + ", numCuenta=" + numCuenta + ", nomBanco=" + nomBanco
+		return "Cuenta [id=" + id + ", usuario="  + ", numCuenta=" + numCuenta + ", nomBanco=" + nomBanco
 				+ ", saldo=" + saldo + ", fechaDeAlta=" + fechaDeAlta + ", movimientos=" + "]";
 	}
 

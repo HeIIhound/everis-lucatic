@@ -43,7 +43,7 @@
 			style="background-image: url('resources/images/fondo.jpg');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 				<form:form class="login100-form validate-form" method="post"
-					action="login" modelAttribute="Usuariologin">
+					action="inicio" modelAttribute="Usuariologin">
 					<span class="login100-form-title p-b-10"> Inicio de sesión </span>
 					<span class="container-login10011"
 						style="background-image: url('resources/images/inversisa.png');"></span>

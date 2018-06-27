@@ -4,19 +4,18 @@
 <%@ page isELIgnored="false" %> <%--  Sin esta linea no me funcionaba el JSTL --%>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<title>BancoApp - Inicio</title>
-
-<link
+  <head>
+    <meta charset="utf-8">
+    <title>BancoApp - Inicio</title>
+    
+    <link
 	href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700|Open+Sans"
 	rel="stylesheet">
 <link href="<c:url value="/resources/css/styles-merged.css" />"
 	rel="stylesheet">
 <link href="<c:url value="/resources/css/style.min.css" />"
-	rel="stylesheet">
-
-</head>
+	rel="stylesheet">  </head>
+  </head>
 <body>
 	<div class="probootstrap-page-wrapper">
 		<!-- Fixed navbar -->
@@ -39,7 +38,7 @@
 		<section class="probootstrap-section">
 			<div class="container">
 				<p>
-					<h3>Cuentas disponibles:</h3>				
+<h3>Cuentas disponibles:</h3>				
 				</p>
 					<table class="table" align="center">
 					  <tr>

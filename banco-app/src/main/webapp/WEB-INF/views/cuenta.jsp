@@ -1,12 +1,12 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ page isELIgnored="false" %> <%--  Sin esta linea no me funcionaba el JSTL --%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="utf-8">
-<title>BancoApp - Inicio</title>
+<title>BancoApp - Cuentas</title>
 
 <link
 	href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700|Open+Sans"
@@ -30,7 +30,15 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					<li class="li">Bienvenido:  </li>
-					<li class="liforte">${cliente.nombre} ${cliente.apellido}   </li>
+					<li class="liforte">${cuentaSelec.usuario.nombre} ${cuentaSelec.usuario.apellido}   </li>
+					<li><a class="dropdown" href="perfil?id=${cuentaSelec.usuario.id}">Ver Perfil</a></li>					
+					<li class="dropdown"><a href="#" data-toggle="dropdown"
+						class="dropdown-toggle">Operaciones</a>
+						<ul class="dropdown-menu">
+							<li><a href="about.html">Ver Movimientos</a></li>
+							<li><a href="courses.html">Ingresar</a></li>
+							<li><a href="course-single.html">Extraer</a></li>
+						</ul></li>
 					<li><a href="logout">Salir ></a></li>
 				</ul>
 			</div>
@@ -39,33 +47,45 @@
 		<section class="probootstrap-section">
 			<div class="container">
 				<p>
-					<h3>Cuentas disponibles:</h3>				
+					<h3>Cuenta seleccionada:</h3>				
 				</p>
 					<table class="table" align="center">
 					  <tr>
-					    <th>Numero de Cuenta</th>
-					    <th>Saldo Disponible</th> 
+					    <th>Numero de cuenta:</th>
+					    <td>${cuentaSelec.numCuenta}</th> 
 					  </tr>							
 					  <tr>
-					    <td><c:forEach var="Cuenta" items="${cliente.cuentas}">
-										<a href="cuenta?id=${Cuenta.id}">${Cuenta.numCuenta}</a><br><br>
-							</c:forEach></td>
-					    <td>
-					    	<c:forEach var="Cuenta" items="${cliente.cuentas}">
-										${Cuenta.saldo}<br><br>
-							</c:forEach>
-						</td> 
+					    <th>Saldo disponible:</th>
+					    <td>${cuentaSelec.saldo}</th> 
 					  </tr>		
-					</table></div>
+					  <tr>
+					    <th>Banco:</th>
+					    <td>${cuentaSelec.nomBanco}</th> 
+					  </tr>	
+					  <tr>
+					    <th>Titular:</th>
+					    <td>${cuentaSelec.usuario.nombre} ${cuentaSelec.usuario.apellido}</th> 
+					  </tr>	
+					  <tr>
+					    <th>Fecha de alta:</th>
+					    <td>${cuentaSelec.fechaDeAlta}</th> 
+					  </tr>		
+					</table><br>
+<!-- 					<a class="btn" href="inicio" >Volver</a>		 -->
+						<form:form  method="post" action="inicio" modelAttribute="Usuariologin">
+						<button class="btn" type="submit">Volver</button>
+						</form:form>
+			</div>
 		</section>
-	
-	
+
+	</div>
+
 	<!-- END wrapper -->
+	
 	
 	<script src="<c:url value="/resources/js/scripts.min.js" />"></script>
 	<script src="<c:url value="/resources/js/main.min.js" />"></script>
 	<script src="<c:url value="/resources/js/custom.js" />"></script>
-	
-</body>
 
+</body>
 </html>

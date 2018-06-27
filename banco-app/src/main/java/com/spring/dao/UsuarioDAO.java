@@ -53,9 +53,23 @@ public class UsuarioDAO {
 	}
 	
 	@Transactional
+	public Usuario buscarClienteSeleccionado(int id) {
+		Query query = sessionFactory.getCurrentSession().createQuery("from Usuario where id ='" + id + "'");
+		Usuario ClienteSelec = (Usuario) query.uniqueResult();
+		return ClienteSelec;
+	}
+	
+	@Transactional
 	public List<Cuenta> buscarCuenta(Usuariologin User) {
 		Query query = sessionFactory.getCurrentSession().createQuery("from Cuenta where idUser ='" + User.getId() + "'");
 		List<Cuenta> ListaCuentas = (List<Cuenta>) query.list();
 		return ListaCuentas;
+	}
+	
+	@Transactional
+	public Cuenta buscarCuentaSeleccionada(int id) {
+		Query query = sessionFactory.getCurrentSession().createQuery("from Cuenta where id ='" + id + "'");
+		Cuenta CuentaSelec = (Cuenta) query.uniqueResult();
+		return CuentaSelec;
 	}
 }
