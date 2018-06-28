@@ -23,7 +23,7 @@
 
 		<nav class="navbar navbar-default probootstrap-navbar">
 			<div class="container">
-				<a class="navbar-brand" href="#"> <img
+				<a class="navbar-brand" href="volver?id=${cliente.id}"> <img
 					src="<c:url value="/resources/images/inversis.png" />" width="100%"
 					height="auto">
 				</a>
@@ -43,19 +43,15 @@
 				</p>
 					<table class="table" align="center">
 					  <tr>
-					    <th>Numero de Cuenta</th>
+					    <th>N&uacutemero de Cuenta</th>
 					    <th>Saldo Disponible</th> 
-					  </tr>							
+					  </tr>	
+					  <c:forEach var="Cuenta" items="${cliente.cuentas}">						
 					  <tr>
-					    <td><c:forEach var="Cuenta" items="${cliente.cuentas}">
-										<a href="cuenta?id=${Cuenta.id}">${Cuenta.numCuenta}</a><br><br>
-							</c:forEach></td>
-					    <td>
-					    	<c:forEach var="Cuenta" items="${cliente.cuentas}">
-										${Cuenta.saldo}<br><br>
-							</c:forEach>
-						</td> 
-					  </tr>		
+					    <td><a href="cuenta?id=${Cuenta.id}">${Cuenta.numCuenta}</a></td>
+					    <td>${Cuenta.saldo}&#8364</td> 
+					  </tr>
+					  </c:forEach>		
 					</table></div>
 		</section>
 	

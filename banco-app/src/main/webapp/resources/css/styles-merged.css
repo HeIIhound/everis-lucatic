@@ -19,6 +19,47 @@ body {
 	margin: 0
 }
 
+table.tableSimple {
+  	width: 500px;
+  	text-align: center;
+  	border-collapse: collapse;
+}
+table.tableSimple th {
+	white-space: auto;
+ 	border: 0px solid #FFFFFF;
+  	padding: 3px 0px;
+}
+table.tableSimple td{
+	text-align: left;
+	white-space: auto;
+ 	border: 0px solid #FFFFFF;
+  	padding: 3px 3px;
+} 
+table.colorInversis {
+	margin:  auto;
+  	background-color: #EEEEEE;
+  	width: 550px;
+  	text-align: center;
+ 
+}
+table.colorInversis td {
+	font-size: 13px;
+  	padding: 2px 2px;
+}
+table.colorInversis th {
+	font-size: 15px;
+  	font-weight: bold;
+  	color: #FFFFFF;
+  	text-align: center;
+	background: #088A68;
+  	padding: 2px 2px;
+}
+table.colorInversis tr:nth-child(even) {
+  	background: #8CD4B7;
+}
+
+
+
 article, aside, details, figcaption, figure, footer, header, hgroup,
 	main, menu, nav, section, summary {
 	display: block
@@ -191,6 +232,7 @@ optgroup {
 }
 
 table {
+	margin: 0 auto;
 	border-spacing: 0;
 	border-collapse: collapse
 }

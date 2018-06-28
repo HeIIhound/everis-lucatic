@@ -23,14 +23,14 @@
 
 		<nav class="navbar navbar-default probootstrap-navbar">
 			<div class="container">
-				<a class="navbar-brand" href="#"> <img
+				<a class="navbar-brand" href="volver?id=${clienteSelec.id}"> <img
 					src="<c:url value="/resources/images/inversis.png" />" width="100%"
 					height="auto">
 				</a>
 
 				<ul class="nav navbar-nav navbar-right">
 					<li class="li">${clienteSelec.nombre} ${clienteSelec.apellido}</li>
-					<li><a>Ver Perfil</a></li>
+					<li><a class="dropdown" href="perfil?id=${cuentaSelec.usuario.id}">Ver Perfil</a></li>
 					<li class="dropdown"><a href="#" data-toggle="dropdown"
 						class="dropdown-toggle">Operaciones</a>
 						<ul class="dropdown-menu">
@@ -62,7 +62,7 @@
 					    <td>${clienteSelec.dni}</th> 
 					  </tr>	
 					  <tr>
-					    <th>Ultimo acceso:</th>
+					    <th>&Uacuteltimo acceso:</th>
 					    <td>
 					    	<c:forEach var="Usuariologin" items="${clienteSelec.usuariologins}">
 										${Usuariologin.ultimoAcceso}
@@ -80,7 +80,7 @@
 						</td> 
 					  </tr>		
 					</table><br>
-				<a class="btn" href="inicio" >Volver</a>
+				<a class="btn" href="cuenta?id=${clienteSelec.id}" >Volver</a>
 			</div>
 		</section>
 

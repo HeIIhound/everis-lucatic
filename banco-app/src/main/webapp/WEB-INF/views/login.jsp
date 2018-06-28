@@ -7,8 +7,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
 <link
 	href="<c:url value="/resources/vendor/bootstrap/css/bootstrap.min.css" />"
 	rel="stylesheet">
@@ -44,7 +42,7 @@
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 				<form:form class="login100-form validate-form" method="post"
 					action="inicio" modelAttribute="Usuariologin">
-					<span class="login100-form-title p-b-10"> Inicio de sesión </span>
+					<span class="login100-form-title p-b-10"> Inicio de sesi&oacuten </span>
 					<span class="container-login10011"
 						style="background-image: url('resources/images/inversisa.png');"></span>
 

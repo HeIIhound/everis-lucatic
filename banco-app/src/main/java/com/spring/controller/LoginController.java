@@ -50,9 +50,6 @@ public class LoginController {
 	@RequestMapping(value = "/cuenta", method = RequestMethod.GET)
 	public ModelAndView cuentas(HttpServletRequest request) throws Exception {
 			Cuenta cuentaSelec = IUsuarioDAO.buscarCuentaSeleccionada(Integer.parseInt(request.getParameter("id")));
-			System.out.println("------------------------------Nombre y apellidos dentro de cuenta");
-			System.out.println(cuentaSelec.getUsuario().getNombre());
-			System.out.println(cuentaSelec.getUsuario().getApellido());
 			ModelAndView model = new ModelAndView("cuenta");
 			model.addObject("cuentaSelec", cuentaSelec);
 			return model;
@@ -64,6 +61,22 @@ public class LoginController {
 			ModelAndView model = new ModelAndView("perfil");
 			model.addObject("clienteSelec", clienteSelec);
 			return model;
+	}
+	
+	@RequestMapping(value = "/movimientos", method = RequestMethod.GET)
+	public ModelAndView movimientos(HttpServletRequest request) throws Exception {		
+		Cuenta cuentaSelec = IUsuarioDAO.buscarCuentaSeleccionada(Integer.parseInt(request.getParameter("idCuenta")));
+		ModelAndView model = new ModelAndView("movimientos");
+		model.addObject("cuentaSelec", cuentaSelec);
+		return model;
+	}
+	
+	@RequestMapping(value = "/volver", method = RequestMethod.GET)
+	public ModelAndView volver(HttpServletRequest request) throws Exception {		
+		Usuario cliente = IUsuarioDAO.buscarClienteSeleccionado(Integer.parseInt(request.getParameter("id")));
+		ModelAndView model = new ModelAndView("inicio");
+		model.addObject("cliente", cliente);
+		return model;
 	}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
