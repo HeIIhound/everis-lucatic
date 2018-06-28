@@ -13,6 +13,23 @@ body, h1, h2, h3, h4, h5, h6 {
 	-webkit-transition: .3s all
 }
 
+.textbox {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  width: 120px;
+  cursor: pointer;
+  padding: 10px 20px;
+  border: 1px solid #b7b7b7;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  text-align: right;
+  letter-spacing: 1px;
+  -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) inset;
+  box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) inset;
+
+}
+
 .btn {
   background: #17a680;
   background-image: -webkit-linear-gradient(top, #17a680, #088a67);

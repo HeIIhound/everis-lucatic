@@ -1,7 +1,8 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ page isELIgnored="false" %> <%--  Sin esta linea no me funcionaba el JSTL --%>
+<%@ page isELIgnored="false"%>
+<%--  Sin esta linea no me funcionaba el JSTL --%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -29,13 +30,16 @@
 				</a>
 
 				<ul class="nav navbar-nav navbar-right">
-					<li class="li">${clienteSelec.nombre} ${clienteSelec.apellido}</li>
-					<li><a class="dropdown" href="perfil?id=${cuentaSelec.usuario.id}">Ver Perfil</a></li>
+				<li class="li">Bienvenido:  </li>
+					<li class="liforte">${cuentaSelec.usuario.nombre} ${cuentaSelec.usuario.apellido}   </li>
+					<li><a class="dropdown"
+						href="perfil?id=${clienteSelec.id}">Ver Perfil</a></li>
 					<li class="dropdown"><a href="#" data-toggle="dropdown"
 						class="dropdown-toggle">Operaciones</a>
 						<ul class="dropdown-menu">
 							<li><a href="about.html">Ver Movimientos</a></li>
-							<li><a href="courses.html">Ingresar</a></li>
+							<li>
+							<li><a href="ingresar?idCuenta=${clienteSelec.id}">Ingresar</a></li>
 							<li><a href="course-single.html">Extraer</a></li>
 						</ul></li>
 					<li><a href="logout">Salir ></a></li>
@@ -45,50 +49,52 @@
 
 		<section class="probootstrap-section">
 			<div class="container">
+
 				<p>
-					<h3>Detalles de perfil:</h3>				
+				<h3>Detalles de perfil:</h3>
 				</p>
-					<table class="table" align="center">
-					  <tr>
-					    <th>Nombre:</th>
-					    <td>${clienteSelec.nombre}</th> 
-					  </tr>							
-					  <tr>
-					    <th>Apellido:</th>
-					    <td>${clienteSelec.apellido}</th> 
-					  </tr>		
-					  <tr>
-					    <th>DNI:</th>
-					    <td>${clienteSelec.dni}</th> 
-					  </tr>	
-					  <tr>
-					    <th>&Uacuteltimo acceso:</th>
-					    <td>
-					    	<c:forEach var="Usuariologin" items="${clienteSelec.usuariologins}">
+
+				<table class="table">
+					<tr>
+						<th>Nombre:</th>
+						<td>${clienteSelec.nombre}
+					</tr>
+					<tr>
+						<th>Apellido:</th>
+						<td>${clienteSelec.apellido}
+					</tr>
+					<tr>
+						<th>DNI:</th>
+						<td>${clienteSelec.dni}
+					</tr>
+					<tr>
+						<th>&Uacuteltimo acceso:</th>
+						<td><c:forEach var="Usuariologin"
+								items="${clienteSelec.usuariologins}">
 										${Usuariologin.ultimoAcceso}
-							</c:forEach></td> 
-					  </tr>	
-					  <tr>
-					    <th>Cuentas:</th>
-					    <td>
-					    	<select>
-					    	<option selected="yes">Cuentas disponibles</option>
-							<c:forEach var="Cuentas" items="${clienteSelec.cuentas}">										
-								<option>${Cuentas.numCuenta}</option>						
-							</c:forEach></td> 
-							</select>
-						</td> 
-					  </tr>		
-					</table><br>
-				<a class="btn" href="cuenta?id=${clienteSelec.id}" >Volver</a>
+							</c:forEach></td>
+					</tr>
+					<tr>
+						<th>Cuentas:</th>
+						<td><select>
+								<option selected>Cuentas disponibles</option>
+								<c:forEach var="Cuentas" items="${clienteSelec.cuentas}">
+									<option>${Cuentas.numCuenta}</option>
+								</c:forEach>
+						</select></td>
+					</tr>
+				</table>
+				<div class="fot">
+				<a class="btn" href="cuenta?idCuenta=${idCuenta}">Volver</a>
+				</div>
 			</div>
 		</section>
 
 	</div>
 
 	<!-- END wrapper -->
-	
-	
+
+
 	<script src="<c:url value="/resources/js/scripts.min.js" />"></script>
 	<script src="<c:url value="/resources/js/main.min.js" />"></script>
 	<script src="<c:url value="/resources/js/custom.js" />"></script>

@@ -49,7 +49,7 @@ public class LoginController {
 		
 	@RequestMapping(value = "/cuenta", method = RequestMethod.GET)
 	public ModelAndView cuentas(HttpServletRequest request) throws Exception {
-			Cuenta cuentaSelec = IUsuarioDAO.buscarCuentaSeleccionada(Integer.parseInt(request.getParameter("id")));
+			Cuenta cuentaSelec = IUsuarioDAO.buscarCuentaSeleccionada(Integer.parseInt(request.getParameter("idCuenta")));
 			ModelAndView model = new ModelAndView("cuenta");
 			model.addObject("cuentaSelec", cuentaSelec);
 			return model;
@@ -57,8 +57,13 @@ public class LoginController {
 	
 	@RequestMapping(value = "/perfil", method = RequestMethod.GET)
 	public ModelAndView perfil(HttpServletRequest request) throws Exception {
-			Usuario clienteSelec = IUsuarioDAO.buscarClienteSeleccionado(Integer.parseInt(request.getParameter("id")));
+		System.out.println("---------------------------------------Entra en controler");
+			int idCuenta = Integer.parseInt(request.getParameter("idCuenta"));
+			Usuario clienteSelec = IUsuarioDAO.buscarClienteSeleccionado(Integer.parseInt(request.getParameter("idUser")));
+			System.out.println(clienteSelec.getApellido());
+			System.out.println(request.getParameter("idUser"));
 			ModelAndView model = new ModelAndView("perfil");
+			model.addObject("idCuenta", idCuenta);
 			model.addObject("clienteSelec", clienteSelec);
 			return model;
 	}
@@ -71,9 +76,17 @@ public class LoginController {
 		return model;
 	}
 	
+	@RequestMapping(value = "/ingresar", method = RequestMethod.GET)
+	public ModelAndView ingresar(HttpServletRequest request) throws Exception {		
+		Cuenta cuentaSelec = IUsuarioDAO.buscarCuentaSeleccionada(Integer.parseInt(request.getParameter("idCuenta")));
+		ModelAndView model = new ModelAndView("ingresar");
+		model.addObject("cuentaSelec", cuentaSelec);
+		return model;
+	}
+	
 	@RequestMapping(value = "/volver", method = RequestMethod.GET)
 	public ModelAndView volver(HttpServletRequest request) throws Exception {		
-		Usuario cliente = IUsuarioDAO.buscarClienteSeleccionado(Integer.parseInt(request.getParameter("id")));
+		Usuario cliente = IUsuarioDAO.buscarClienteSeleccionado(Integer.parseInt(request.getParameter("idUser")));
 		ModelAndView model = new ModelAndView("inicio");
 		model.addObject("cliente", cliente);
 		return model;

@@ -31,12 +31,12 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li class="li">Bienvenido:  </li>
 					<li class="liforte">${cuentaSelec.usuario.nombre} ${cuentaSelec.usuario.apellido}   </li>
-					<li><a class="dropdown" href="perfil?id=${cuentaSelec.usuario.id}">Ver Perfil</a></li>					
+					<li><a class="dropdown" href="perfil?idCuenta=${cuentaSelec.id}&idUser=${cuentaSelec.usuario.id}">Ver Perfil</a></li>					
 					<li class="dropdown"><a href="#" data-toggle="dropdown"
 						class="dropdown-toggle">Operaciones</a>
 						<ul class="dropdown-menu">
-							<li><a href="movimientos?idCuenta=${cuentaSelec.usuario.id}">Ver Movimientos</a></li>
-							<li><a href="courses.html">Ingresar</a></li>
+							<li><a href="movimientos?idCuenta=${cuentaSelec.id}">Ver Movimientos</a></li>
+							<li><a href="ingresar?idCuenta=${cuentaSelec.usuario.id}">Ingresar</a></li>
 							<li><a href="course-single.html">Extraer</a></li>
 						</ul></li>
 					<li><a href="logout">Salir ></a></li>
@@ -52,27 +52,27 @@
 					<table class="table">
 					  <tr>
 					    <th>N&uacutemero de cuenta:</th>
-					    <td>${cuentaSelec.numCuenta}</th> 
+					    <td>${cuentaSelec.numCuenta}</td> 
 					  </tr>							
 					  <tr>
 					    <th>Saldo disponible:</th>
-					    <td>${cuentaSelec.saldo}&#8364</th> 
+					    <td>${cuentaSelec.saldo}&#8364</td> 
 					  </tr>		
 					  <tr>
 					    <th>Banco:</th>
-					    <td>${cuentaSelec.nomBanco}</th> 
+					    <td>${cuentaSelec.nomBanco}</td> 
 					  </tr>	
 					  <tr>
 					    <th>Titular:</th>
-					    <td>${cuentaSelec.usuario.nombre} ${cuentaSelec.usuario.apellido}</th> 
+					    <td>${cuentaSelec.usuario.nombre} ${cuentaSelec.usuario.apellido}</td> 
 					  </tr>	
 					  <tr>
 					    <th>Fecha de alta:</th>
-					    <td>${cuentaSelec.fechaDeAlta}</th> 
+					    <td>${cuentaSelec.fechaDeAlta}</td> 
 					  </tr>		
-					</table><br>
-					<a class="btn" href="volver?id=${cuentaSelec.usuario.id}">Volver</a>		
-						
+					</table><div class="fot">
+				<a class="btn" href="volver?idUser=${cuentaSelec.usuario.id}">Volver</a>
+				</div>
 			</div>
 		</section>
 

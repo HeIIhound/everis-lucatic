@@ -53,8 +53,8 @@ public class UsuarioDAO {
 	}
 	
 	@Transactional
-	public Usuario buscarClienteSeleccionado(int id) {
-		Query query = sessionFactory.getCurrentSession().createQuery("from Usuario where id ='" + id + "'");
+	public Usuario buscarClienteSeleccionado(int idUser) {
+		Query query = sessionFactory.getCurrentSession().createQuery("from Usuario where id ='" + idUser + "'");
 		Usuario ClienteSelec = (Usuario) query.uniqueResult();
 		return ClienteSelec;
 	}

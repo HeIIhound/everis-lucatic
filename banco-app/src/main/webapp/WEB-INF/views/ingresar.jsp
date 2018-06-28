@@ -2,13 +2,12 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ page isELIgnored="false"%>
-<%--  Sin esta linea no me funcionaba el JSTL --%>
+<%@ page isELIgnored="false"%><%--  Sin esta linea no me funcionaba el JSTL --%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<title>BancoApp - Movimientos</title>
+<title>BancoApp - Ingresar</title>
 
 <link
 	href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700|Open+Sans"
@@ -34,11 +33,12 @@
 					<li class="li">Bienvenido:</li>
 					<li class="liforte">${cuentaSelec.usuario.nombre}
 						${cuentaSelec.usuario.apellido}</li>
-					<li><a class="dropdown" href="perfil?idCuenta=${cuentaSelec.id}&idUser=${cuentaSelec.usuario.id}">Ver Perfil</a></li>
+					<li><a class="dropdown"
+						href="perfil?id=${cuentaSelec.usuario.id}">Ver Perfil</a></li>
 					<li class="dropdown"><a href="#" data-toggle="dropdown"
 						class="dropdown-toggle">Operaciones</a>
 						<ul class="dropdown-menu">
-							<li><a href="ingresar?idCuenta=${cuentaSelec.usuario.id}">Ingresar</a></li>
+							<li><a href="movimientos?idCuenta=${cuentaSelec.usuario.id}">Ver Movimientos</a></li>
 							<li><a href="course-single.html">Extraer</a></li>
 						</ul></li>
 					<li><a href="logout">Salir ></a></li>
@@ -49,7 +49,7 @@
 		<section class="probootstrap-section">
 			<div class="container">
 				<p>
-				<h3>Movimientos en cuenta:</h3>
+				<h3>Ingresar en cuenta:</h3>
 				</p>
 				<table class="tableSimple">
 					<tr>
@@ -60,32 +60,17 @@
 					</tr>
 				</table>
 				<br>
-				
-				<table class="colorInversis">
-					<thead>
-						<tr>
-							<th>Fecha</th>
-							<th>Hora</th>
-							<th>Cantidad</th>
-							<th>Operaci&oacuten</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="Movimiento" items="${cuentaSelec.movimientos}">
-							<tr>
-								<c:set var="now" value="${Movimiento.fechaOperacion}" />
-								<td><fmt:formatDate type="date" value="${now}" /></td>
-								<td><fmt:formatDate type="time" value="${now}" /></td>
-								<td>${Movimiento.cantidad}&#8364</td>
-								<td>${Movimiento.tipoOperacion}</td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+				<div class="oper">
+					<form method="post" commandName="persona" action="showListContact">
+						<strong>Cantidad: </strong>   
+						<input class="textbox"name="consulta" class="input search-input" type="text"
+							placeholder="--------&#8364" size="100"><br><br>
+						<button type="submit" class="btn" value="buscar">Ingresar</button>
+					</form>
+				</div>
 				<div class="fot">
 				<a class="btn" href="cuenta?idCuenta=${cuentaSelec.id}">Volver</a>
 				</div>
-
 			</div>
 		</section>
 
