@@ -13,7 +13,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Inicio</title>
+<title>Perfil</title>
 
 <!-- Bootstrap core CSS -->
 <link
@@ -45,7 +45,7 @@
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item active"><pre><a class="nav-link">Bienvenido:  ${usuario.nombre} ${usuario.apellido}
 					</a></pre></li>
-					<li class="nav-item active"><pre><a class="nav-link" href="perfil?idUsuario=${usuario.id}&idCuenta=${cuenta.id}">Ver Perfil</a></pre></li>
+					<li class="nav-item active"><pre><a class="nav-link">Menu</a></pre></li>
 					<li class="nav-item active"><a class="nav-link" href="login">salir</a></li>
 				</ul>
 			</div>
@@ -59,14 +59,22 @@
     padding-right: 300px;
     text-align: -webkit-center;
 ">
-			<pre><strong style="padding-left: 100px;">Cuentas Seleccionada</strong>
+			<pre><strong style="padding-left: 220px;">Detalles del perfil</strong>
 			
-                    Cuenta:       ${cuenta.numCuenta}  
-				                     
-Saldo:        ${cuenta.saldo}</pre>
-				 
-				 
-				 <a class="nav-link" href="inicioVolverDesdeGestionCuenta?idUsuario=${usuario.id}">Volver</a>
+		  Nombre:                                     Apellido:
+              ${usuario.nombre}                                       ${usuario.apellido}
+			
+	            DNI:                                     Ultimo Acceso:
+                     ${usuario.dni}                          <c:forEach items="${usuariologin}" var="usuariologin">${usuariologin.ultimoAcceso}</c:forEach>
+			
+			Cuentas:
+			
+			Cuentas Disponibles.
+			<c:forEach items="${c}" var="c">
+			${c.numCuenta}
+			</c:forEach>
+			<a class="nav-link" href="gestionVolverDesdePerfil?idUsuario=${usuario.id}&idCuenta=${cuenta.id}">                      Volver</a>
+			</pre>
 	</div>
 	<!-- /.container -->
 

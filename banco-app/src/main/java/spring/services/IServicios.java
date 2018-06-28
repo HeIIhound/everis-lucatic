@@ -11,4 +11,6 @@ public interface IServicios {
 	public Usuariologin getUsuariologin(Usuariologin usuariologin);
 	
 	public Usuario getUsuario(Usuariologin usuariologin);
+	
+	public Usuario getUsuarioByiD(int UsuarioId);
 }

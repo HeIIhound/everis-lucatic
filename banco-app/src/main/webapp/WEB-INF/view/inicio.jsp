@@ -43,9 +43,11 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><pre><a class="nav-link">Bienvenido:  ${usuario.nombre} ${usuario.apellido}
+					<li class="nav-item active">
+         		<pre><a class="nav-link">Bienvenido:  ${usuario.nombre} ${usuario.apellido}
 					</a></pre></li>
-					<li class="nav-item active"><a class="nav-link" href="http://localhost:8080/banco-app/">salir</a></li>
+					<li class="nav-item active"><pre><a class="nav-link">Menu</a></pre></li>
+					<li class="nav-item active"><a class="nav-link" href="login">salir</a></li>
 				</ul>
 			</div>
 		</div>
@@ -58,10 +60,10 @@
     padding-right: 300px;
     text-align: -webkit-center;
 ">
-			<strong style="padding-left: 220px;">Cuentas Disponibles</strong>
-			<pre>
+			<pre><strong style="padding-left: 220px;">Cuentas Disponibles</strong>
+			
 			<c:forEach items="${c}" var="c">
-			<pre><a href="gestion?id=${c.id}">${c.numCuenta}</a>                                              ${c.saldo}</pre>
+			<pre><a href="gestion?idUsuario=${usuario.id}&idCuenta=${c.id}">                          ${c.numCuenta}</a>                 ${c.saldo}</pre>
 			</c:forEach></pre>
 	</div>
 	<!-- /.container -->

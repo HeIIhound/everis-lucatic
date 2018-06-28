@@ -82,4 +82,24 @@ public class Datos implements IDatos {
 		}
 		return usuario;
 	}
+	
+	//Busca y devuelve un usuario por su id
+	@Override
+	@Transactional
+	public Usuario getUsuarioByiD(int UsuarioId) {
+
+		Usuario usu = new Usuario();
+
+		Query query = sessionFactory.getCurrentSession().createQuery("from Usuario");
+		@SuppressWarnings("unchecked")
+		List<Usuario> list = query.list();
+
+		for (Usuario u : list) {
+
+			if (u.getId() == UsuarioId) {
+				usu = u;
+			}
+		}
+		return usu;
+	}
 }

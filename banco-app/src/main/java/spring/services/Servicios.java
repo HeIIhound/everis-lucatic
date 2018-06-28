@@ -33,4 +33,10 @@ public class Servicios implements IServicios {
 		
 		return idatos.getUsuario(usuariologin);
 	}
+
+	@Override
+	public Usuario getUsuarioByiD(int UsuarioId) {
+		
+		return idatos.getUsuarioByiD(UsuarioId);
+	}
 }

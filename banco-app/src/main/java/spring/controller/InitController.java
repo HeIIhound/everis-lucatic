@@ -5,8 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttribute;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.model.Cuenta;
@@ -49,15 +47,15 @@ public class InitController {
 	}
 
 	// pagina login
-	@GetMapping("/")
+	@GetMapping({ "/", "/login" })
 	public String login() {
 		return "login";
 	}
 
 	// pagina inicio POST
 	@RequestMapping(value = "/inicio", method = RequestMethod.POST)
-	public ModelAndView inicio(@ModelAttribute Usuariologin usuariologin,@ModelAttribute("Usuario") Usuario usuario) {
-		
+	public ModelAndView inicio(@ModelAttribute Usuariologin usuariologin, @ModelAttribute("Usuario") Usuario usuario) {
+
 		if (service.login(usuariologin) == true) {
 			ModelAndView model = new ModelAndView("inicio");
 			usuario = service.getUsuario(service.getUsuariologin(usuariologin));
@@ -71,21 +69,68 @@ public class InitController {
 		}
 	}
 
-	// pagina inicio GET
-	@RequestMapping(value = "/inicio", method = RequestMethod.GET)
-	public ModelAndView inicio() {
+	// paginas de gestion de cuenta
+	@RequestMapping(value = "/inicioVolverDesdeGestionCuenta", method = RequestMethod.GET)
+	public ModelAndView inicioVolverGestionCuenta(HttpServletRequest request) {
 
+		int id = Integer.parseInt(request.getParameter("idUsuario"));
+
+		Usuario usuario = service.getUsuarioByiD(id);
+		Set<Cuenta> c = usuario.getCuentas();
 		ModelAndView model = new ModelAndView("inicio");
+
+		model.addObject("usuario", usuario);
+		model.addObject("c", c);
 		return model;
 	}
 
-	// pagina de gestion de cuenta
-	@RequestMapping(value = "/gestion", method = RequestMethod.GET)
-	public ModelAndView gestionCuenta(HttpServletRequest request, @ModelAttribute Usuario Usuario) {
-		System.out.println(Usuario.getNombre());
-		int idcuenta = Integer.parseInt(request.getParameter("id"));
-		ModelAndView model = new ModelAndView("gestionCuenta");
+	@RequestMapping(value = { "/gestion", "gestionVolverDesdePerfil" })
+	public ModelAndView gestionCuenta(HttpServletRequest request) {
 
+		Usuario usuario = service.getUsuarioByiD(Integer.parseInt(request.getParameter("idUsuario")));
+
+		Set<Cuenta> c = usuario.getCuentas();
+		Cuenta cuen = new Cuenta();
+
+		for (Cuenta cu : c) {
+
+			if (cu.getId() == Integer.parseInt(request.getParameter("idCuenta"))) {
+
+				cuen = cu;
+			}
+		}
+
+		Integer.parseInt(request.getParameter("idUsuario"));
+
+		ModelAndView model = new ModelAndView("gestionCuenta");
+		model.addObject("usuario", usuario);
+		model.addObject("cuenta", cuen);
+		return model;
+	}
+
+	//pagina de perfil
+	@RequestMapping(value = "/perfil", method = RequestMethod.GET)
+	public ModelAndView perfil(HttpServletRequest request) {
+
+		Usuario usuario = service.getUsuarioByiD(Integer.parseInt(request.getParameter("idUsuario")));
+		Set<Cuenta> c = usuario.getCuentas();
+
+		Cuenta cuen = new Cuenta();
+
+		for (Cuenta cu : c) {
+
+			if (cu.getId() == Integer.parseInt(request.getParameter("idCuenta"))) {
+
+				cuen = cu;
+			}
+		}
+
+		Set<Usuariologin> usuariologin = usuario.getUsuariologins();
+		ModelAndView model = new ModelAndView("perfil");
+		model.addObject("usuario", usuario);
+		model.addObject("cuenta", cuen);
+		model.addObject("c", c);
+		model.addObject("usuariologin", usuariologin);
 		return model;
 	}
 }
