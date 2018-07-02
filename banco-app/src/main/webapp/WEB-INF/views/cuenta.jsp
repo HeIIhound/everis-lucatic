@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page isELIgnored="false" %> <%--  Sin esta linea no me funcionaba el JSTL --%>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,7 +24,7 @@
 
 		<nav class="navbar navbar-default probootstrap-navbar">
 			<div class="container">
-				<a class="navbar-brand" href="volver?id=${cuentaSelec.usuario.id}"> <img
+				<a class="navbar-brand" href="volver?idUser=${cuentaSelec.usuario.id}"> <img
 					src="<c:url value="/resources/images/inversis.png" />" width="100%"
 					height="auto">
 				</a>
@@ -36,10 +37,10 @@
 						class="dropdown-toggle">Operaciones</a>
 						<ul class="dropdown-menu">
 							<li><a href="movimientos?idCuenta=${cuentaSelec.id}">Ver Movimientos</a></li>
-							<li><a href="ingresar?idCuenta=${cuentaSelec.usuario.id}">Ingresar</a></li>
-							<li><a href="course-single.html">Extraer</a></li>
+							<li><a href="ingresar?idCuenta=${cuentaSelec.id}">Ingresar</a></li>
+							<li><a href="extraer?idCuenta=${cuentaSelec.id}">Extraer</a></li>
 						</ul></li>
-					<li><a href="logout">Salir ></a></li>
+					<li><a href="logout?idUser=${cuentaSelec.usuario.id}">Salir ></a></li>
 				</ul>
 			</div>
 		</nav>
@@ -51,7 +52,7 @@
 				</p>
 					<table class="table">
 					  <tr>
-					    <th>N&uacutemero de cuenta:</th>
+					    <th>Número de cuenta:</th>
 					    <td>${cuentaSelec.numCuenta}</td> 
 					  </tr>							
 					  <tr>
@@ -83,7 +84,6 @@
 	
 	<script src="<c:url value="/resources/js/scripts.min.js" />"></script>
 	<script src="<c:url value="/resources/js/main.min.js" />"></script>
-	<script src="<c:url value="/resources/js/custom.js" />"></script>
 
 </body>
 </html>

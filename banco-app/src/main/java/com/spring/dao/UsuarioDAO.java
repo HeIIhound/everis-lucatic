@@ -1,7 +1,15 @@
 package com.spring.dao;
 
+import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
+import javax.jws.soap.SOAPBinding.Use;
 import javax.transaction.Transactional;
 
 import org.hibernate.Query;
@@ -72,4 +80,53 @@ public class UsuarioDAO {
 		Cuenta CuentaSelec = (Cuenta) query.uniqueResult();
 		return CuentaSelec;
 	}
+	
+	@Transactional
+	public boolean comprobarMovimientos(Cuenta cuentaSelec) {
+		boolean movimientos = false;
+		if(cuentaSelec.getMovimientos().size()!=0) {
+			movimientos= true;
+		}
+		System.out.println(movimientos);
+		return movimientos;
+	}
+	
+	@Transactional
+	public Cuenta operativa(int idCuenta, String cantidad, String operativa ) throws ParseException {
+		Query query = sessionFactory.getCurrentSession().createQuery("from Cuenta where id ='" + idCuenta + "'");
+		Cuenta CuentaSelec = (Cuenta) query.uniqueResult();
+		BigDecimal saldo = CuentaSelec.getSaldo();
+		BigDecimal cantidadBD =new BigDecimal(cantidad);
+		BigDecimal res = null;
+		if(operativa.equals("extraer")) {
+			res = saldo.subtract(cantidadBD);//realiza la resta 
+		}else if (operativa.equals("ingresar")) {
+			res = saldo.add(cantidadBD);//realiza la suma 
+		} 
+		CuentaSelec.setSaldo(res);
+		sessionFactory.getCurrentSession().saveOrUpdate(CuentaSelec);
+		registrarMovimiento(CuentaSelec, cantidadBD, operativa);
+		return CuentaSelec;
+	}
+	
+	@Transactional
+	public void registrarAcceso(String idUser) {
+		Usuariologin UserSelec = (Usuariologin) sessionFactory.getCurrentSession().createQuery("from Usuariologin where idUser ='" + idUser + "'").uniqueResult();
+		UserSelec.setUltimoAcceso(new Date());
+		sessionFactory.getCurrentSession().saveOrUpdate(UserSelec);
+	}
+	
+	@Transactional
+	public void registrarMovimiento(Cuenta CuentaSelec, BigDecimal cantidad, String operacion) {
+		Movimiento registroMovimiento = new Movimiento();
+		registroMovimiento.setCuenta(CuentaSelec);
+		Date now = new Date();
+		registroMovimiento.setFechaOperacion(now);
+		registroMovimiento.setCantidad(cantidad);
+		registroMovimiento.setTipoOperacion(operacion);
+		sessionFactory.getCurrentSession().save(registroMovimiento);
+	}
+	
+	
+	
 }

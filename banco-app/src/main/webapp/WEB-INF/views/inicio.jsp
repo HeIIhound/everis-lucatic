@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page isELIgnored="false"%>
 <%--  Sin esta linea no me funcionaba el JSTL --%>
 <!DOCTYPE html>
@@ -24,7 +25,7 @@
 
 		<nav class="navbar navbar-default probootstrap-navbar">
 			<div class="container">
-				<a class="navbar-brand" href="volver?id=${cliente.id}"> <img
+				<a class="navbar-brand" href="volver?idUser=${cliente.id}"> <img
 					src="<c:url value="/resources/images/inversis.png" />" width="100%"
 					height="auto">
 				</a>
@@ -32,7 +33,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li class="li">Bienvenido:</li>
 					<li class="liforte">${cliente.nombre}${cliente.apellido}</li>
-					<li><a href="logout">Salir ></a></li>
+					<li><a href="logout?idUser=${cliente.id}">Salir ></a></li>
 				</ul>
 			</div>
 		</nav>
@@ -44,7 +45,7 @@
 				</p>
 				<table class="table">
 					<tr>
-						<th>N&uacutemero de Cuenta</th>
+						<th>Número de Cuenta</th>
 						<th>Saldo Disponible</th>
 					</tr>
 					<c:forEach var="Cuenta" items="${cliente.cuentas}">

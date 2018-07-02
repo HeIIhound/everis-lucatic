@@ -8,7 +8,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<title>BancoApp - Ingresar</title>
+<title>BancoApp - Extraer</title>
 
 <link
 	href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700|Open+Sans"
@@ -40,7 +40,7 @@
 						class="dropdown-toggle">Operaciones</a>
 						<ul class="dropdown-menu">
 							<li><a href="movimientos?idCuenta=${cuentaSelec.id}">Ver Movimientos</a></li>
-							<li><a href="extraer?idCuenta=${cuentaSelec.id}">Extraer</a></li>
+							<li><a href="ingresar?idCuenta=${cuentaSelec.id}">Ingresar</a></li>
 						</ul></li>
 					<li><a href="logout?idUser=${cuentaSelec.usuario.id}">Salir ></a></li>
 				</ul>
@@ -50,7 +50,7 @@
 		<section class="probootstrap-section">
 			<div class="container">
 				<p>
-				<h3>Ingresar en cuenta:</h3>
+				<h3>Extraer de cuenta:</h3>
 				</p>
 				<table class="tableSimple">
 					<tr>
@@ -65,12 +65,12 @@
 					<form method="post" action="operativa">
 						<strong>Cantidad: </strong>   
 						<input class="textbox" name="cantidad" class="input search-input" type="text"
-							placeholder="Introduzca una cantidad" size="100"><strong>  €</strong><br><br> 
+							placeholder="Introduzca una cantidad" size="100"><br><br>
 						<input type="hidden" name="idCuenta" value="${cuentaSelec.id}" />
-						<input type="hidden" name="operativa" value="ingresar" />
-						<button type="submit" class="btn" value="Ingresar">Ingresar</button>
+						<input type="hidden" name="operativa" value="extraer" />
+						<button type="submit" class="btn" value="Extraer">Extraer</button>
 					</form>
-					
+					<strong>€</strong>  
 				</div>
 				<div class="fot">
 				<a class="btn" href="cuenta?idCuenta=${cuentaSelec.id}">Volver</a>

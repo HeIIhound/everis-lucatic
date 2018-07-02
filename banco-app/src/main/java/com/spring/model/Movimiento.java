@@ -99,8 +99,12 @@ public class Movimiento  implements Serializable {
     }
 
 
-
-
+	@Override
+	public String toString() {
+		return "Movimiento [id=" + id + ", cuenta=" + cuenta + ", fechaOperacion=" + fechaOperacion + ", cantidad="
+				+ cantidad + ", tipoOperacion=" + tipoOperacion + "]";
+	}
+    
 }
 
 

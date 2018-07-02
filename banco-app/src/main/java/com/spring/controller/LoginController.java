@@ -28,12 +28,12 @@ public class LoginController {
 		return resultado;
 	}
 
-	//Especificacion para el @ModelAttribute
+	// Especificacion para el @ModelAttribute
 	@ModelAttribute("Usuariologin")
 	public Usuariologin modelAttribute() {
 		return new Usuariologin();
 	}
-	
+
 	@RequestMapping(value = "/inicio", method = RequestMethod.POST)
 	public ModelAndView inicio(@ModelAttribute Usuariologin user) throws Exception {
 		if (IUsuarioDAO.comprobarUsuario(user) == true) {
@@ -46,56 +46,76 @@ public class LoginController {
 			return model;
 		}
 	}
-		
+
 	@RequestMapping(value = "/cuenta", method = RequestMethod.GET)
 	public ModelAndView cuentas(HttpServletRequest request) throws Exception {
-			Cuenta cuentaSelec = IUsuarioDAO.buscarCuentaSeleccionada(Integer.parseInt(request.getParameter("idCuenta")));
-			ModelAndView model = new ModelAndView("cuenta");
-			model.addObject("cuentaSelec", cuentaSelec);
-			return model;
-	}
-	
-	@RequestMapping(value = "/perfil", method = RequestMethod.GET)
-	public ModelAndView perfil(HttpServletRequest request) throws Exception {
-		System.out.println("---------------------------------------Entra en controler");
-			int idCuenta = Integer.parseInt(request.getParameter("idCuenta"));
-			Usuario clienteSelec = IUsuarioDAO.buscarClienteSeleccionado(Integer.parseInt(request.getParameter("idUser")));
-			System.out.println(clienteSelec.getApellido());
-			System.out.println(request.getParameter("idUser"));
-			ModelAndView model = new ModelAndView("perfil");
-			model.addObject("idCuenta", idCuenta);
-			model.addObject("clienteSelec", clienteSelec);
-			return model;
-	}
-	
-	@RequestMapping(value = "/movimientos", method = RequestMethod.GET)
-	public ModelAndView movimientos(HttpServletRequest request) throws Exception {		
 		Cuenta cuentaSelec = IUsuarioDAO.buscarCuentaSeleccionada(Integer.parseInt(request.getParameter("idCuenta")));
-		ModelAndView model = new ModelAndView("movimientos");
+		ModelAndView model = new ModelAndView("cuenta");
 		model.addObject("cuentaSelec", cuentaSelec);
 		return model;
 	}
-	
+
+	@RequestMapping(value = "/perfil", method = RequestMethod.GET)
+	public ModelAndView perfil(HttpServletRequest request) throws Exception {
+		int idCuenta = Integer.parseInt(request.getParameter("idCuenta"));
+		Usuario clienteSelec = IUsuarioDAO.buscarClienteSeleccionado(Integer.parseInt(request.getParameter("idUser")));
+		ModelAndView model = new ModelAndView("perfil");
+		model.addObject("idCuenta", idCuenta);
+		model.addObject("clienteSelec", clienteSelec);
+		return model;
+	}
+
+	@RequestMapping(value = "/movimientos", method = RequestMethod.GET)
+	public ModelAndView movimientos(HttpServletRequest request) throws Exception {
+		Cuenta cuentaSelec = IUsuarioDAO.buscarCuentaSeleccionada(Integer.parseInt(request.getParameter("idCuenta")));
+		boolean valor = IUsuarioDAO.comprobarMovimientos(cuentaSelec);
+		ModelAndView model = new ModelAndView("movimientos");
+		model.addObject("cuentaSelec", cuentaSelec);
+		model.addObject("valor", valor);
+		return model;
+	}
+
 	@RequestMapping(value = "/ingresar", method = RequestMethod.GET)
-	public ModelAndView ingresar(HttpServletRequest request) throws Exception {		
+	public ModelAndView ingresar(HttpServletRequest request) throws Exception {
 		Cuenta cuentaSelec = IUsuarioDAO.buscarCuentaSeleccionada(Integer.parseInt(request.getParameter("idCuenta")));
 		ModelAndView model = new ModelAndView("ingresar");
 		model.addObject("cuentaSelec", cuentaSelec);
 		return model;
 	}
-	
+
+	@RequestMapping(value = "/extraer", method = RequestMethod.GET)
+	public ModelAndView extraer(HttpServletRequest request) throws Exception {
+		Cuenta cuentaSelec = IUsuarioDAO.buscarCuentaSeleccionada(Integer.parseInt(request.getParameter("idCuenta")));
+		ModelAndView model = new ModelAndView("extraer");
+		model.addObject("cuentaSelec", cuentaSelec);
+		return model;
+	}
+
 	@RequestMapping(value = "/volver", method = RequestMethod.GET)
-	public ModelAndView volver(HttpServletRequest request) throws Exception {		
+	public ModelAndView volver(HttpServletRequest request) throws Exception {
 		Usuario cliente = IUsuarioDAO.buscarClienteSeleccionado(Integer.parseInt(request.getParameter("idUser")));
 		ModelAndView model = new ModelAndView("inicio");
 		model.addObject("cliente", cliente);
 		return model;
 	}
-	
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public ModelAndView logout() throws Exception {		
-			ModelAndView model = new ModelAndView("login");
-			return model;
-	}
 
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public ModelAndView logout(HttpServletRequest request) throws Exception {
+		IUsuarioDAO.registrarAcceso(request.getParameter("idUser"));
+		ModelAndView model = new ModelAndView("login");
+		return model;
+	}
+	
+	@RequestMapping(value = "/operativa", method = RequestMethod.POST)
+	public ModelAndView operativa(HttpServletRequest request) throws Exception {
+		String cantidad = request.getParameter("cantidad");
+		int idCuenta = Integer.parseInt(request.getParameter("idCuenta"));
+		String operativa = request.getParameter("operativa");
+		Cuenta cuentaSelec = IUsuarioDAO.operativa(idCuenta, cantidad, operativa);
+		ModelAndView model = new ModelAndView(operativa);
+		model.addObject("cuentaSelec", cuentaSelec);
+		return model;
+		
+	}
+	
 }

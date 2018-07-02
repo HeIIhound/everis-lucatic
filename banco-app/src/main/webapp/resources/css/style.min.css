@@ -19,7 +19,7 @@ body, h1, h2, h3, h4, h5, h6 {
   box-sizing: content-box;
   width: 120px;
   cursor: pointer;
-  padding: 10px 20px;
+  padding: 5px 5px;
   border: 1px solid #b7b7b7;
   -webkit-border-radius: 3px;
   border-radius: 3px;
@@ -27,7 +27,7 @@ body, h1, h2, h3, h4, h5, h6 {
   letter-spacing: 1px;
   -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) inset;
   box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) inset;
-
+  
 }
 
 .btn {

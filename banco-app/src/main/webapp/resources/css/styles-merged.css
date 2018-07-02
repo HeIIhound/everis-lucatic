@@ -30,6 +30,20 @@ body {
 		
 }
 
+.msjmov {
+	text-align: center;
+	margin: auto;
+	width: 600px;
+	padding: 20px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: #088A68;
+	background-color: #8CD4B7;
+	
+	font-weight: bold;
+		
+}
+
 table.tableSimple {
   	width: 500px;
   	text-align: center;
@@ -76,6 +90,26 @@ table.colorInversis th {
 }
 table.colorInversis tr:nth-child(even) {
   	background: #8CD4B7;
+}
+
+/* css button pagination */
+input[type="button"] {
+    transition: all .3s;
+    border: 1px solid #ddd;
+    padding: 0px 13px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+input[type="button"]:not(.active) {
+    background-color:transparent;
+    cursor: pointer
+}
+.active {
+    background-color: #8CD4B7;
+    color :#fff;
+}
+input[type="button"]:hover:not(.active) {
+    background-color: #ddd;
 }
 
 
