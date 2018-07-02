@@ -9,6 +9,8 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import spring.model.Cuenta;
+import spring.model.Movimiento;
 import spring.model.Usuario;
 import spring.model.Usuariologin;
 
@@ -101,5 +103,26 @@ public class Datos implements IDatos {
 			}
 		}
 		return usu;
+	}
+	
+	//Busca y devuelve los movimientos de una cuenta por su id
+	@Override
+	@Transactional
+	public Movimiento getMovimientoByIdCuenta(Cuenta cuenta) {
+		
+		Query query = sessionFactory.getCurrentSession().createQuery("from Movimiento");
+		@SuppressWarnings("unchecked")
+		List<Movimiento> list = query.list();
+
+		Movimiento movimiento = new Movimiento();
+		for (Movimiento u : list) {
+
+			if (u.getCuenta().equals(cuenta)) {
+				movimiento = u;
+			}
+		}
+		
+		
+		return movimiento;
 	}
 }

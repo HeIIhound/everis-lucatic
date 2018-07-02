@@ -79,7 +79,6 @@
 
 					<div class="container-login100-form-btn">
 												<button type="submit" class="login100-form-btn">Iniciar Sesion</button>
-<!-- 						<a class="login100-form-btn" type="submit" href="inicio">Iniciar Sesion</a> -->
 					</div>
 				</form:form>
 			</div>

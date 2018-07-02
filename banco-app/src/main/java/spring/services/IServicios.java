@@ -1,5 +1,7 @@
 package spring.services;
 
+import spring.model.Cuenta;
+import spring.model.Movimiento;
 import spring.model.Usuario;
 import spring.model.Usuariologin;
 
@@ -13,4 +15,6 @@ public interface IServicios {
 	public Usuario getUsuario(Usuariologin usuariologin);
 	
 	public Usuario getUsuarioByiD(int UsuarioId);
+	
+	public Movimiento getMovimientoByIdCuenta(Cuenta cuenta);
 }

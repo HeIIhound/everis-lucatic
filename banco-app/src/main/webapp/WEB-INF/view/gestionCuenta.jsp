@@ -43,10 +43,13 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><pre><a class="nav-link">Bienvenido:  ${usuario.nombre} ${usuario.apellido}
-					</a></pre></li>
-					<li class="nav-item active"><pre><a class="nav-link" href="perfil?idUsuario=${usuario.id}&idCuenta=${cuenta.id}">Ver Perfil</a></pre></li>
-					<li class="nav-item active"><a class="nav-link" href="login">salir</a></li>
+					<li class="nav-item active"><a class="nav-link">Bienvenido:  ${usuario.nombre} ${usuario.apellido}</a></li>
+					<li class="nav-item active"><a class="nav-link" href="perfil?idUsuario=${usuario.id}&idCuenta=${cuenta.id}">Ver Perfil</a></li>
+					<li class="nav-item active"><a class="nav-link">Operaciones:</a></li>
+					<li class="nav-item active"><a class="nav-link" href="movimiento?idUsuario=${usuario.id}&idCuenta=${cuenta.id}">Ver Movimientos</a></li>
+					<li class="nav-item active"><a class="nav-link">Ingresar</a></li>
+					<li class="nav-item active"><a class="nav-link">Extraer</a></li>
+					<li class="nav-item active"><a class="nav-link" href="login">Salir</a></li>
 				</ul>
 			</div>
 		</div>
@@ -66,7 +69,7 @@
 Saldo:        ${cuenta.saldo}</pre>
 				 
 				 
-				 <a class="nav-link" href="inicioVolverDesdeGestionCuenta?idUsuario=${usuario.id}">Volver</a>
+				 <a class="nav-link" href="gestionVolverDesdePerfil?idUsuario=${usuario.id}&idCuenta=${cuenta.id}">Volver</a>
 	</div>
 	<!-- /.container -->
 

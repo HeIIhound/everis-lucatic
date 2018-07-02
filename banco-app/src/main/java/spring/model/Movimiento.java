@@ -29,6 +29,14 @@ public class Movimiento implements java.io.Serializable {
 	private BigDecimal cantidad;
 	private String tipoOperacion;
 
+	
+	
+	@Override
+	public String toString() {
+		return "Movimiento [id=" + id + ", fechaOperacion=" + fechaOperacion + ", cantidad="
+				+ cantidad + ", tipoOperacion=" + tipoOperacion + "]";
+	}
+
 	public Movimiento() {
 	}
 
@@ -57,7 +65,7 @@ public class Movimiento implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "idcuenta", nullable = false)
 	public Cuenta getCuenta() {
 		return this.cuenta;

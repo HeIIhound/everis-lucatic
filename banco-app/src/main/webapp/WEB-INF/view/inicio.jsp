@@ -43,11 +43,8 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active">
-         		<pre><a class="nav-link">Bienvenido:  ${usuario.nombre} ${usuario.apellido}
-					</a></pre></li>
-					<li class="nav-item active"><pre><a class="nav-link">Menu</a></pre></li>
-					<li class="nav-item active"><a class="nav-link" href="login">salir</a></li>
+					<li class="nav-item active"><a class="nav-link">Bienvenido:  ${usuario.nombre} ${usuario.apellido}</a></li>
+					<li class="nav-item active"><a class="nav-link" href="login">Salir</a></li>
 				</ul>
 			</div>
 		</div>

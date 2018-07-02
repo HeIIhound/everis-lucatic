@@ -24,8 +24,12 @@
 		<junit.version>4.12</junit.version>
 	</properties>
 
-	<!-- junit -->
+
+
+ <!-- dependencias -->
 	<dependencies>
+
+		<!-- junit -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

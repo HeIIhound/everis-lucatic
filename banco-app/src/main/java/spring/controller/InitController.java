@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.model.Cuenta;
+import spring.model.Movimiento;
 import spring.model.Usuario;
 import spring.model.Usuariologin;
 import spring.services.IServicios;
@@ -57,7 +58,7 @@ public class InitController {
 	public ModelAndView inicio(@ModelAttribute Usuariologin usuariologin, @ModelAttribute("Usuario") Usuario usuario) {
 
 		if (service.login(usuariologin) == true) {
-			ModelAndView model = new ModelAndView("inicio");
+			ModelAndView model = new ModelAndView("inicio2");
 			usuario = service.getUsuario(service.getUsuariologin(usuariologin));
 			model.addObject("usuario", usuario);
 			Set<Cuenta> c = usuario.getCuentas();
@@ -77,14 +78,14 @@ public class InitController {
 
 		Usuario usuario = service.getUsuarioByiD(id);
 		Set<Cuenta> c = usuario.getCuentas();
-		ModelAndView model = new ModelAndView("inicio");
+		ModelAndView model = new ModelAndView("inicio2");
 
 		model.addObject("usuario", usuario);
 		model.addObject("c", c);
 		return model;
 	}
 
-	@RequestMapping(value = { "/gestion", "gestionVolverDesdePerfil" })
+	@RequestMapping(value = { "/gestion", "gestionVolverDesdePerfil","gestionVolverDesdeMovimiento" })
 	public ModelAndView gestionCuenta(HttpServletRequest request) {
 
 		Usuario usuario = service.getUsuarioByiD(Integer.parseInt(request.getParameter("idUsuario")));
@@ -102,7 +103,7 @@ public class InitController {
 
 		Integer.parseInt(request.getParameter("idUsuario"));
 
-		ModelAndView model = new ModelAndView("gestionCuenta");
+		ModelAndView model = new ModelAndView("gestionCuenta2");
 		model.addObject("usuario", usuario);
 		model.addObject("cuenta", cuen);
 		return model;
@@ -126,11 +127,67 @@ public class InitController {
 		}
 
 		Set<Usuariologin> usuariologin = usuario.getUsuariologins();
-		ModelAndView model = new ModelAndView("perfil");
+		ModelAndView model = new ModelAndView("perfil2");
 		model.addObject("usuario", usuario);
 		model.addObject("cuenta", cuen);
 		model.addObject("c", c);
 		model.addObject("usuariologin", usuariologin);
 		return model;
 	}
+	
+	//pagina Movimientos
+	@RequestMapping(value = "/movimiento", method = RequestMethod.GET)
+	public ModelAndView movimiento(HttpServletRequest request) {
+		Usuario usuario = service.getUsuarioByiD(Integer.parseInt(request.getParameter("idUsuario")));
+		Set<Cuenta> c = usuario.getCuentas();
+		Cuenta cuen = new Cuenta();
+
+		for (Cuenta cu : c) {
+
+			if (cu.getId() == Integer.parseInt(request.getParameter("idCuenta"))) {
+
+				cuen = cu;
+			}
+		}
+
+		Integer.parseInt(request.getParameter("idUsuario"));
+		
+		//cuenta
+		//System.out.println(cuen.getMovimientos());
+		//Set<Movimiento> movimiento = cuen.getMovimientos();
+		//Movimiento movimiento =  service.getMovimientoByIdCuenta(cuen);
+		
+		//null
+		//System.out.println(movimiento.getId());
+		
+		ModelAndView model = new ModelAndView("movimiento2");
+		
+		model.addObject("usuario",usuario);
+		model.addObject("cuenta",cuen);
+		model.addObject("movimiento",cuen.getMovimientos());
+		
+		return model;
+	}
+	
+	//pagina Movimientos
+		@RequestMapping(value = "/ingresar", method = RequestMethod.GET)
+		public ModelAndView ingresar(HttpServletRequest request) {
+			Usuario usuario = service.getUsuarioByiD(Integer.parseInt(request.getParameter("idUsuario")));
+			Set<Cuenta> c = usuario.getCuentas();
+			Cuenta cuen = new Cuenta();
+
+			for (Cuenta cu : c) {
+
+				if (cu.getId() == Integer.parseInt(request.getParameter("idCuenta"))) {
+
+					cuen = cu;
+				}
+			}
+			
+			
+			ModelAndView model = new ModelAndView("ingresar");
+			model.addObject("usuario",usuario);
+			model.addObject("cuenta",cuen);
+			return model;
+		}
 }

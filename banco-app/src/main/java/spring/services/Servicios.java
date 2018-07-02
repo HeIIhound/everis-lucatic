@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import spring.data.IDatos;
+import spring.model.Cuenta;
+import spring.model.Movimiento;
 import spring.model.Usuario;
 import spring.model.Usuariologin;
 
@@ -38,5 +40,11 @@ public class Servicios implements IServicios {
 	public Usuario getUsuarioByiD(int UsuarioId) {
 		
 		return idatos.getUsuarioByiD(UsuarioId);
+	}
+	
+	@Override
+	public Movimiento getMovimientoByIdCuenta(Cuenta cuenta) {
+		
+		return idatos.getMovimientoByIdCuenta(cuenta);
 	}
 }
