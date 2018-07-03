@@ -1,5 +1,7 @@
 package spring.data;
 
+import java.math.BigDecimal;
+
 import spring.model.Cuenta;
 import spring.model.Movimiento;
 import spring.model.Usuario;
@@ -17,4 +19,6 @@ public interface IDatos {
 	public Usuario getUsuarioByiD(int UsuarioId);
 
 	public Movimiento getMovimientoByIdCuenta(Cuenta cuenta);
+
+	public void IngresarExtraer(Cuenta cuenta, BigDecimal saldo);
 }

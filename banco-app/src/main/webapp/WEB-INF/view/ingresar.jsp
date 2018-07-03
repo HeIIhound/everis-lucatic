@@ -84,7 +84,7 @@
 						<ul>
 							<li><a href="movimiento?idUsuario=${usuario.id}&idCuenta=${cuenta.id}">Ver Movimientos</a></li>
 							<li><a href="ingresar?idUsuario=${usuario.id}&idCuenta=${cuenta.id}">Ingresar</a></li>
-							<li><a href="#">Extraer</a></li>
+							<li><a href="extraer?idUsuario=${usuario.id}&idCuenta=${cuenta.id}">Extraer</a></li>
 						</ul></li>
 					<li><a href="login">Salir</a></li>
 				</ul>
@@ -103,9 +103,15 @@
 
 		<div class="intro-content">
 			<div class="validate-input">
-				<h2 style="font-size: 45px; padding-top: 25px;">Ingresar en Cuenta:</h2> ${cuenta.numCuenta}
+				<h2 style="font-size: 45px; padding-top: 25px;">Ingresar en Cuenta:</h2> ${cuenta.numCuenta} <strong>${cuenta.saldo}</strong>
 				<!-- 				todo -->
-				<strong>Cantidad:</strong> <input type="text" class="input100">€
+				<br/><form action="operacion">
+				<strong>Cantidad:</strong>
+				<input type="number" name="saldo" min="1" />€<br/>
+				<input type="hidden" name="idUsuario" value="${usuario.id}" />
+				<input type="hidden" name="idCuenta" value="${cuenta.id}" />
+				<input type="submit" value="Ingresar"/>
+				</form>
 				<!-- 				todo -->
 			</div>
 		</div>
@@ -129,7 +135,6 @@
 	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
 	<!-- JavaScript Libraries -->
-<%-- 	<script src="<c:url value="/resources/main.js" />"></script> --%>
 	
 	<script src="<c:url value="/resources/lib/jquery/jquery.min.js" />"></script>
 	<script

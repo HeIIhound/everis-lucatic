@@ -1,5 +1,7 @@
 package spring.data;
 
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -125,4 +127,40 @@ public class Datos implements IDatos {
 		
 		return movimiento;
 	}
+	
+	
+	@Override
+	@Transactional
+	public void IngresarExtraer(Cuenta cuenta,BigDecimal saldo) {
+		String operacion = null;
+		if(saldo.signum() == -1) {
+			cuenta.setSaldo(cuenta.getSaldo().add(saldo));
+			sessionFactory.getCurrentSession().saveOrUpdate(cuenta);
+			operacion = "extraer";
+			movimiento(cuenta,saldo,operacion);
+		}else if (saldo.signum() == 1){
+			cuenta.setSaldo(cuenta.getSaldo().add(saldo));
+			sessionFactory.getCurrentSession().update(cuenta);
+			operacion = "ingresar";
+			movimiento(cuenta,saldo,operacion);
+		}
+		
+	}
+	
+	
+	public void movimiento(Cuenta cuenta,BigDecimal saldo,String operacion) {
+		Movimiento movimiento = new Movimiento();
+		
+		Date date = new Date();
+		movimiento.setCuenta(cuenta);
+		movimiento.setFechaOperacion(date);
+		movimiento.setCantidad(saldo);
+		movimiento.setTipoOperacion(operacion);
+		
+		sessionFactory.getCurrentSession().save(movimiento);
+	}
+	
+	
+	
+	
 }

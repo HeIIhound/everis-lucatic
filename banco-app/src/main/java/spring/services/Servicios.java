@@ -1,5 +1,7 @@
 package spring.services;
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,5 +48,11 @@ public class Servicios implements IServicios {
 	public Movimiento getMovimientoByIdCuenta(Cuenta cuenta) {
 		
 		return idatos.getMovimientoByIdCuenta(cuenta);
+	}
+	
+	@Override
+	public void IngresarExtraer(Cuenta cuenta, BigDecimal saldo) {
+		
+		idatos.IngresarExtraer(cuenta, saldo);
 	}
 }

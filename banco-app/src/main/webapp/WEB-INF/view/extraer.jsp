@@ -1,10 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page isELIgnored="false"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<title>Gestion Cuenta</title>
+<title>Inicio</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="" name="keywords">
 <meta content="" name="description">
@@ -48,7 +48,6 @@
 </head>
 
 <body id="body">
-
 	<!--==========================
     Top Bar
   ============================-->
@@ -79,14 +78,13 @@
 
 			<nav id="nav-menu-container">
 				<ul class="nav-menu">
-					<li class="menu-active"><a>Bienvenido: ${usuario.nombre}
-							${usuario.apellido}</a></li>
-					<li><a href="perfil?idUsuario=${usuario.id}&idCuenta=${cuenta.id}">Ver perfil</a></li>
+					<li class="menu-active"><a>Bienvenido: ${usuario.nombre}${usuario.apellido}</a></li>
+							<li><a href="perfil?idUsuario=${usuario.id}&idCuenta=${cuenta.id}">Ver perfil</a></li>
 					<li class="menu-has-children"><a>Operaciones</a>
 						<ul>
 							<li><a href="movimiento?idUsuario=${usuario.id}&idCuenta=${cuenta.id}">Ver Movimientos</a></li>
 							<li><a href="ingresar?idUsuario=${usuario.id}&idCuenta=${cuenta.id}">Ingresar</a></li>
-							<li><a href="#">Extraer</a></li>
+							<li><a href="extraer?idUsuario=${usuario.id}&idCuenta=${cuenta.id}">Extraer</a></li>
 						</ul></li>
 					<li><a href="login">Salir</a></li>
 				</ul>
@@ -101,12 +99,21 @@
   ============================-->
 	<section id="intro">
 
+	
+
 		<div class="intro-content">
-			<h2>Cuentas Seleccionada</h2>
-
-			<h1>Cuenta: ${cuenta.numCuenta} Saldo: ${cuenta.saldo}</h1> <a href="inicioVolverDesdeGestionCuenta?idUsuario=${usuario.id}">Volver</a>
-
-
+			<div class="validate-input">
+				<h2 style="font-size: 45px; padding-top: 25px;">Extraer de Cuenta:</h2> ${cuenta.numCuenta} <strong>${cuenta.saldo}</strong>
+				<!-- 				todo -->
+				<br/><form action="operacion">
+				<strong>Cantidad:</strong>
+				<input type="number" name="saldo" max="-1" />€<br/>
+				<input type="hidden" name="idUsuario" value="${usuario.id}" />
+				<input type="hidden" name="idCuenta" value="${cuenta.id}" />
+				<input type="submit" value="Ingresar"/>
+				</form>
+				<!-- 				todo -->
+			</div>
 		</div>
 
 		<div id="intro-carousel" class="owl-carousel">
@@ -128,6 +135,7 @@
 	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
 	<!-- JavaScript Libraries -->
+	
 	<script src="<c:url value="/resources/lib/jquery/jquery.min.js" />"></script>
 	<script
 		src="<c:url value="/resources/lib/jquery/jquery-migrate.min.js" />"></script>
