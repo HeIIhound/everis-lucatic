@@ -49,9 +49,7 @@
 
 		<section class="probootstrap-section">
 			<div class="container">
-				<p>
 				<h3>Extraer de cuenta:</h3>
-				</p>
 				<table class="tableSimple">
 					<tr>
 						<th>Número:</th>
@@ -65,12 +63,11 @@
 					<form method="post" action="operativa">
 						<strong>Cantidad: </strong>   
 						<input class="textbox" name="cantidad" class="input search-input" type="text"
-							placeholder="Introduzca una cantidad" size="100"><br><br>
+							placeholder="Introduzca una cantidad" size="300" id="numeroNegativo" onkeypress="return numerosNegativos(event);"><strong>  €</strong><br><br> 
 						<input type="hidden" name="idCuenta" value="${cuentaSelec.id}" />
 						<input type="hidden" name="operativa" value="extraer" />
 						<button type="submit" class="btn" value="Extraer">Extraer</button>
 					</form>
-					<strong>€</strong>  
 				</div>
 				<div class="fot">
 				<a class="btn" href="cuenta?idCuenta=${cuentaSelec.id}">Volver</a>
@@ -84,7 +81,7 @@
 
 	<script src="<c:url value="/resources/js/scripts.min.js" />"></script>
 	<script src="<c:url value="/resources/js/main.min.js" />"></script>
-	<script src="<c:url value="/resources/js/custom.js" />"></script>
+	<script src="<c:url value="/resources/js/pagination.js" />"></script>
 
 </body>
 </html>

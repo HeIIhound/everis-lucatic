@@ -1,15 +1,13 @@
 package com.spring.dao;
 
 import java.math.BigDecimal;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Calendar;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-import javax.jws.soap.SOAPBinding.Use;
 import javax.transaction.Transactional;
 
 import org.hibernate.Query;
@@ -18,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.model.*;
+
 
 @Repository // Indica que es un DAO, tiene efecto sobre la transaccionalidad automática
 public class UsuarioDAO {
@@ -70,24 +69,24 @@ public class UsuarioDAO {
 	@Transactional
 	public List<Cuenta> buscarCuenta(Usuariologin User) {
 		Query query = sessionFactory.getCurrentSession().createQuery("from Cuenta where idUser ='" + User.getId() + "'");
+		@SuppressWarnings("unchecked") // Ignora los posibles problemas del "cast" de la lista de objetos
 		List<Cuenta> ListaCuentas = (List<Cuenta>) query.list();
 		return ListaCuentas;
 	}
 	
 	@Transactional
-	public Cuenta buscarCuentaSeleccionada(int id) {
-		Query query = sessionFactory.getCurrentSession().createQuery("from Cuenta where id ='" + id + "'");
+	public Cuenta buscarCuentaSeleccionada(int idCuenta) {
+		Query query = sessionFactory.getCurrentSession().createQuery("from Cuenta where id ='" + idCuenta + "'");
 		Cuenta CuentaSelec = (Cuenta) query.uniqueResult();
 		return CuentaSelec;
 	}
-	
+		
 	@Transactional
 	public boolean comprobarMovimientos(Cuenta cuentaSelec) {
 		boolean movimientos = false;
 		if(cuentaSelec.getMovimientos().size()!=0) {
 			movimientos= true;
 		}
-		System.out.println(movimientos);
 		return movimientos;
 	}
 	
@@ -126,7 +125,5 @@ public class UsuarioDAO {
 		registroMovimiento.setTipoOperacion(operacion);
 		sessionFactory.getCurrentSession().save(registroMovimiento);
 	}
-	
-	
-	
+		
 }

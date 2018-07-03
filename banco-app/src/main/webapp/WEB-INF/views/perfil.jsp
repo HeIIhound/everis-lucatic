@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ page isELIgnored="false"%>
 <%--  Sin esta linea no me funcionaba el JSTL --%>
 <!DOCTYPE html>
@@ -48,11 +49,7 @@
 
 		<section class="probootstrap-section">
 			<div class="container">
-
-				<p>
 				<h3>Detalles de perfil:</h3>
-				</p>
-
 				<table class="table">
 					<tr>
 						<th>Nombre:</th>
@@ -67,7 +64,7 @@
 						<td>${clienteSelec.dni}
 					</tr>
 					<tr>
-						<th>&Uacuteltimo acceso:</th>
+						<th>Último acceso:</th>
 						<td><c:forEach var="Usuariologin"
 								items="${clienteSelec.usuariologins}">
 										${Usuariologin.ultimoAcceso}

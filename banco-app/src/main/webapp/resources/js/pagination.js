@@ -63,3 +63,52 @@ function pageButtons($pCount,$cur) {
     $buttons += "<input type='button' value='Siguiente &gt;&gt;' onclick='sort("+($cur + 1)+")' "+$nextDis+">";
     return $buttons;
 }
+
+
+//function valida(e){
+//    tecla = (document.all) ? e.keyCode : e.which;
+//
+//    //Tecla de retroceso para borrar, siempre la permite
+//    if (tecla==8){
+//    	 alert("debe ser un valor ");
+//        return true;
+//       
+//    }
+//        
+//    // Patron de entrada, en este caso solo acepta numeros
+//    patron =/[0-9]/;
+//    tecla_final = String.fromCharCode(tecla);
+//   
+//    return patron.test(tecla_final);
+//}
+
+
+function numerosNegativos(e)
+{
+    // capturamos la tecla pulsada
+    var teclaPulsada=window.event ? window.event.keyCode:e.which;
+
+    // capturamos el contenido del input
+    var valor=document.getElementById("numeroNegativo").value;
+
+    // 45 = tecla simbolo menos (-)
+    // Si el usuario pulsa la tecla menos, y no se ha pulsado anteriormente
+    // Modificamos el contenido del mismo añadiendo el simbolo menos al
+    // inicio
+    if(teclaPulsada==45 && valor.indexOf("+")==-1)
+    {
+        document.getElementById("numeroNegativo").value="+"+valor;
+    }
+
+    // 13 = tecla enter
+    // 46 = tecla punto (.)
+    // Si el usuario pulsa la tecla enter o el punto y no hay ningun otro
+    // punto
+    if(teclaPulsada==13 || (teclaPulsada==46 && valor.indexOf(".")==-1))
+    {
+        return true;
+    }
+
+    // devolvemos true o false dependiendo de si es numerico o no
+    return /\d/.test(String.fromCharCode(teclaPulsada));
+}

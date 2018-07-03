@@ -1,5 +1,10 @@
 package com.spring.controller;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,9 +74,22 @@ public class LoginController {
 	public ModelAndView movimientos(HttpServletRequest request) throws Exception {
 		Cuenta cuentaSelec = IUsuarioDAO.buscarCuentaSeleccionada(Integer.parseInt(request.getParameter("idCuenta")));
 		boolean valor = IUsuarioDAO.comprobarMovimientos(cuentaSelec);
+		
+		//Nos convierte el set en list
+		List<Movimiento> listamov = new ArrayList<Movimiento>(cuentaSelec.getMovimientos());
+		
+		//Nos ordena la lista de movimientos
+		Collections.sort(listamov, new Comparator<Movimiento>(){
+			@Override
+			public int compare(Movimiento o1, Movimiento o2) {
+				return o1.getId().compareTo(o2.getId());
+			}						
+		});
+		
 		ModelAndView model = new ModelAndView("movimientos");
 		model.addObject("cuentaSelec", cuentaSelec);
 		model.addObject("valor", valor);
+		model.addObject("listamov", listamov);
 		return model;
 	}
 

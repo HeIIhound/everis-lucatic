@@ -40,9 +40,7 @@
 
 		<section class="probootstrap-section">
 			<div class="container">
-				<p>
 				<h3>Cuentas disponibles:</h3>
-				</p>
 				<table class="table">
 					<tr>
 						<th>Número de Cuenta</th>

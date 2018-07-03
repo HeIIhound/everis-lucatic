@@ -104,7 +104,7 @@ public class Movimiento  implements Serializable {
 		return "Movimiento [id=" + id + ", cuenta=" + cuenta + ", fechaOperacion=" + fechaOperacion + ", cantidad="
 				+ cantidad + ", tipoOperacion=" + tipoOperacion + "]";
 	}
-    
+		    
 }
 
 

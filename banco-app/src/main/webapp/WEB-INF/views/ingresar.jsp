@@ -49,9 +49,7 @@
 
 		<section class="probootstrap-section">
 			<div class="container">
-				<p>
 				<h3>Ingresar en cuenta:</h3>
-				</p>
 				<table class="tableSimple">
 					<tr>
 						<th>Número:</th>
@@ -62,10 +60,10 @@
 				</table>
 				<br>
 				<div class="oper">
-					<form method="post" action="operativa">
+					<form method="post" action="operativa" onsubmit="validarFormulario()">
 						<strong>Cantidad: </strong>   
 						<input class="textbox" name="cantidad" class="input search-input" type="text"
-							placeholder="Introduzca una cantidad" size="100"><strong>  €</strong><br><br> 
+							placeholder="Introduzca una cantidad" size="100" id="numeroPositivo" onkeypress="return numerosPositivos(event);"><strong>  €</strong><br><br> 
 						<input type="hidden" name="idCuenta" value="${cuentaSelec.id}" />
 						<input type="hidden" name="operativa" value="ingresar" />
 						<button type="submit" class="btn" value="Ingresar">Ingresar</button>
@@ -84,7 +82,7 @@
 
 	<script src="<c:url value="/resources/js/scripts.min.js" />"></script>
 	<script src="<c:url value="/resources/js/main.min.js" />"></script>
-	<script src="<c:url value="/resources/js/custom.js" />"></script>
+	<script src="<c:url value="/resources/js/pagination.js" />"></script>
 
 </body>
 </html>

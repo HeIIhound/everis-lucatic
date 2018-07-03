@@ -2,9 +2,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ page isELIgnored="false"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page isELIgnored="false"%> <%--  Sin esta linea no me funcionaba el JSTL --%>
 
-<%--  Sin esta linea no me funcionaba el JSTL --%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -49,12 +49,10 @@
 
 		<section class="probootstrap-section">
 			<div class="container">
-				
 				<h3>Movimientos en cuenta:</h3>
-				
 				<table class="tableSimple">
 					<tr>
-						<th>Número:</th>
+						<th>NÃºmero:</th>
 						<td>${cuentaSelec.numCuenta}</td>
 						<th>Saldo:</th>
 						<td>${cuentaSelec.saldo}&#8364</td>
@@ -72,11 +70,11 @@
 									<th>Fecha</th>
 									<th>Hora</th>
 									<th>Cantidad</th>
-									<th>Operación</th>
+									<th>OperaciÃ³n</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="Movimiento" items="${cuentaSelec.movimientos}">
+								<c:forEach var="Movimiento" items="${listamov}">
 									<tr>
 										<c:set var="now" value="${Movimiento.fechaOperacion}" />
 										<td><fmt:formatDate type="date" value="${now}" /></td>

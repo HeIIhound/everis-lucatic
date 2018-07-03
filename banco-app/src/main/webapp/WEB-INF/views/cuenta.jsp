@@ -47,10 +47,8 @@
 
 		<section class="probootstrap-section">
 			<div class="container">
-				<p>
-					<h3>Cuenta seleccionada:</h3>				
-				</p>
-					<table class="table">
+				<h3>Cuenta seleccionada:</h3>				
+				<table class="table">
 					  <tr>
 					    <th>Número de cuenta:</th>
 					    <td>${cuentaSelec.numCuenta}</td> 

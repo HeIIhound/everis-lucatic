@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,7 +43,7 @@
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 				<form:form class="login100-form validate-form" method="post"
 					action="inicio" modelAttribute="Usuariologin">
-					<span class="login100-form-title p-b-10"> Inicio de sesi&oacuten </span>
+					<span class="login100-form-title p-b-10"> Inicio de sesión </span>
 					<span class="container-login10011"
 						style="background-image: url('resources/images/inversisa.png');"></span>
 
@@ -56,10 +57,10 @@
 					</div>
 
 					<div class="wrap-input100 validate-input"
-						data-validate="Es necesaria una contrase�a">
-						<span class="label-input100">Contrase�a</span>
+						data-validate="Es necesaria una contraseña">
+						<span class="label-input100">Contraseña</span>
 						<form:input class="input100" type="password" path="pass"
-							name="pass" placeholder="Introduzca una contrase�a" />
+							name="pass" placeholder="Introduzca una contraseña" />
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
 
