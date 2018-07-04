@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ page isELIgnored="false"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -56,12 +58,12 @@
 							placeholder="Introduzca un usuario"/> <span
 							class="focus-input100"></span>
 					</div>
-
+					${JOptionPane.showMessageDialog(null, "Operación realizada correctamente puñetas")}
 					<div class="wrap-input100 validate-input m-b-18"
-						data-validate="contrase�a requerida">
-						<span class="label-input100">Contrase�a</span> <form:input path="pass"
+						data-validate="contraseña requerida">
+						<span class="label-input100">Contraseña</span> <form:input path="pass"
 							class="input100" type="password"
-							placeholder="Introduzca una contrase�a" /> <span
+							placeholder="Introduzca una contraseña" /> <span
 							class="focus-input100"></span>
 					</div>
 
@@ -73,7 +75,7 @@
 						</div>
 
 						<div>
-							<a href="--" class="txt1">�Olvido su contrase�a? </a>
+							<a href="--" class="txt1">¿Olvido su contraseña? </a>
 						</div>
 					</div>
 

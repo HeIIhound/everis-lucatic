@@ -114,12 +114,12 @@
 					<table id="mytable" class="table table-bordred table-striped">
 
 						<thead>
-
+							<tr>
 							<th> Fecha</th>
 							<th>Hora</th>
 							<th>Cantidad</th>
 							<th>Operacion</th>
-
+							</tr>	
 						</thead>
 						<tbody>
 
@@ -159,6 +159,7 @@
 	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
 	<!-- JavaScript Libraries -->
+	
 	<script src="<c:url value="/resources/lib/jquery/jquery.min.js" />"></script>
 	<script
 		src="<c:url value="/resources/lib/jquery/jquery-migrate.min.js" />"></script>

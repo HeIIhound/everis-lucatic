@@ -8,15 +8,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import spring.model.Cuenta;
-//import spring.model.Movimiento;
+import spring.model.Movimiento;
 import spring.model.Usuario;
 import spring.model.Usuariologin;
 import spring.services.IServicios;
 
 import java.math.BigDecimal;
 import java.util.Set;
+import java.util.TreeSet;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -54,12 +56,12 @@ public class InitController {
 		return "login";
 	}
 
-	// pagina inicio POST
+	// pagina inicio
 	@RequestMapping(value = "/inicio", method = RequestMethod.POST)
 	public ModelAndView inicio(@ModelAttribute Usuariologin usuariologin, @ModelAttribute("Usuario") Usuario usuario) {
 
 		if (service.login(usuariologin) == true) {
-			ModelAndView model = new ModelAndView("inicio2");
+			ModelAndView model = new ModelAndView("inicio");
 			usuario = service.getUsuario(service.getUsuariologin(usuariologin));
 			model.addObject("usuario", usuario);
 			Set<Cuenta> c = usuario.getCuentas();
@@ -67,6 +69,7 @@ public class InitController {
 			return model;
 		} else {
 			ModelAndView model = new ModelAndView("redirect:/");
+			 JOptionPane.showMessageDialog(null, "Usuario o contraseña invalido", "mensaje:", 2);
 			return model;
 		}
 	}
@@ -104,7 +107,7 @@ public class InitController {
 
 		Integer.parseInt(request.getParameter("idUsuario"));
 
-		ModelAndView model = new ModelAndView("gestionCuenta2");
+		ModelAndView model = new ModelAndView("gestionCuenta");
 		model.addObject("usuario", usuario);
 		model.addObject("cuenta", cuen);
 		return model;
@@ -157,7 +160,9 @@ public class InitController {
 
 		model.addObject("usuario", usuario);
 		model.addObject("cuenta", cuen);
-		model.addObject("movimiento", cuen.getMovimientos());
+		Set<Movimiento> set = new TreeSet<>();
+		set = cuen.getMovimientos();
+		model.addObject("movimiento", set);
 
 		return model;
 	}
@@ -204,6 +209,7 @@ public class InitController {
 			return model;
 		}
 
+	//operacion de ingresarOextraer y devuelve a la pagina correspondiente
 	@RequestMapping(value = "/operacion")
 		public ModelAndView operacion(HttpServletRequest request) {	
 			
@@ -219,26 +225,25 @@ public class InitController {
 					cuen = cu;
 				}
 			}
-			BigDecimal saldo = new BigDecimal(s.replaceAll(",", ""));
+			if(s == "") {
+				s = "0";
+			}
+			BigDecimal saldo = new BigDecimal(s.replaceAll("",""));
 			if(saldo.signum() == -1) {
 				service.IngresarExtraer(cuen, saldo);
+				JOptionPane.showMessageDialog(null, "Retiro de dinero realizado correctamente", "mensaje:", 1);
 				ModelAndView model = new ModelAndView("redirect:extraer?idUsuario="+request.getParameter("idUsuario")+"&idCuenta="+request.getParameter("idCuenta"));
+				
 				return model;
 			}else if(saldo.signum() == 1) {
 				service.IngresarExtraer(cuen, saldo);
+				JOptionPane.showMessageDialog(null, "Ingreso de dinero realizado correctamente", "mensaje:", 1);
 				ModelAndView model = new ModelAndView("redirect:ingresar?idUsuario="+request.getParameter("idUsuario")+"&idCuenta="+request.getParameter("idCuenta"));
+				
 				return model;
 			}else {
-				ModelAndView model = new ModelAndView("");
+				ModelAndView model = new ModelAndView("redirect:gestion?idUsuario="+request.getParameter("idUsuario")+"&idCuenta="+request.getParameter("idCuenta"));
 				return model;
 			}
-			
-//			if(0==0) {
-//				ModelAndView model = new ModelAndView("ingresar");
-//				return model;
-//			}else {
-//					ModelAndView model = new ModelAndView("extraer");
-//					return model;
-//					}
 		}
 }
