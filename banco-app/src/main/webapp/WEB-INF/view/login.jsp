@@ -58,7 +58,7 @@
 							placeholder="Introduzca un usuario"/> <span
 							class="focus-input100"></span>
 					</div>
-					${JOptionPane.showMessageDialog(null, "Operación realizada correctamente puñetas")}
+					
 					<div class="wrap-input100 validate-input m-b-18"
 						data-validate="contraseña requerida">
 						<span class="label-input100">Contraseña</span> <form:input path="pass"

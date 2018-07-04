@@ -9,10 +9,6 @@
 <meta content="" name="keywords">
 <meta content="" name="description">
 
-<!-- Favicons -->
-<link href="img/favicon.png" rel="icon">
-<link href="img/apple-touch-icon.png" rel="apple-touch-icon">
-
 <!-- Google Fonts -->
 <link
 	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Montserrat:300,400,700"
@@ -48,17 +44,6 @@
 </head>
 
 <body id="body">
-	<!--==========================
-    Top Bar
-  ============================-->
-	<section id="topbar" class="d-none d-lg-block">
-		<div class="container clearfix">
-			<div class="contact-info float-left">
-				<i class="fa fa-envelope-o"></i> <a
-					href="mailto:contact@example.com">orlando.jesus.pereira.bringtown.sa@everis.com</a>
-			</div>
-		</div>
-	</section>
 
 	<!--==========================
     Header
@@ -69,11 +54,9 @@
 			<div id="logo" class="pull-left">
 				<h1>
 					<a href="#body" class="scrollto"><img
-						src="<c:url value="/resources/inicio/images/banco-inversis.png" />"
+						src="<c:url value="/resources/banco-inversis.png" />"
 						width="300" height="125" style="padding-bottom: 60px;"></a>
 				</h1>
-				<!-- Uncomment below if you prefer to use an image logo -->
-				<!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
 			</div>
 
 			<nav id="nav-menu-container">
@@ -110,29 +93,14 @@
 				<input type="number" name="saldo" min="1" />€<br/>
 				<input type="hidden" name="idUsuario" value="${usuario.id}" />
 				<input type="hidden" name="idCuenta" value="${cuenta.id}" />
-				<input type="submit" value="Ingresar"/>
+				<input type="submit" value="Ingresar" style="margin-top: 20px;"/>
 				</form>
 				<!-- 				todo -->
 			</div>
-		</div>
-
-		<div id="intro-carousel" class="owl-carousel">
-			<div class="item"
-				style="background-image: url('/resources/img/intro-carousel/1.jpg');"></div>
-			<div class="item"
-				style="background-image: url('/resources/img/intro-carousel/2.jpg');"></div>
-			<div class="item"
-				style="background-image: url('/resources/img/intro-carousel/3.jpg');"></div>
-			<div class="item"
-				style="background-image: url('/resources/img/intro-carousel/4.jpg');"></div>
-			<div class="item"
-				style="background-image: url('/resources/img/intro-carousel/5.jpg');"></div>
+			<a href="gestion?idUsuario=${usuario.id}&idCuenta=${cuenta.id}" style="padding-top: 25px;">Volver</a>
 		</div>
 
 	</section>
-	<!-- #intro -->
-
-	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
 	<!-- JavaScript Libraries -->
 	

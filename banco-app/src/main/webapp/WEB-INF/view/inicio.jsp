@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page isELIgnored="false"%>
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page isELIgnored="false" contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,10 +7,6 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="" name="keywords">
 <meta content="" name="description">
-
-<!-- Favicons -->
-<link href="img/favicon.png" rel="icon">
-<link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
 <!-- Google Fonts -->
 <link
@@ -50,18 +45,6 @@
 <body id="body">
 
 	<!--==========================
-    Top Bar
-  ============================-->
-	<section id="topbar" class="d-none d-lg-block">
-		<div class="container clearfix">
-			<div class="contact-info float-left">
-				<i class="fa fa-envelope-o"></i> <a
-					href="mailto:contact@example.com">orlando.jesus.pereira.bringtown.sa@everis.com</a>
-			</div>
-		</div>
-	</section>
-
-	<!--==========================
     Header
   ============================-->
 	<header id="header">
@@ -70,11 +53,9 @@
 			<div id="logo" class="pull-left">
 				<h1>
 					<a href="#body" class="scrollto"><img
-						src="<c:url value="/resources/inicio/images/banco-inversis.png" />"
+						src="<c:url value="/resources/banco-inversis.png" />"
 						width="300" height="125" style="padding-bottom: 60px;"></a>
 				</h1>
-				<!-- Uncomment below if you prefer to use an image logo -->
-				<!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
 			</div>
 
 			<nav id="nav-menu-container">
@@ -106,23 +87,7 @@
 			</div>
 		</div>
 
-		<div id="intro-carousel" class="owl-carousel">
-			<div class="item"
-				style="background-image: url('/resources/img/intro-carousel/1.jpg');"></div>
-			<div class="item"
-				style="background-image: url('/resources/img/intro-carousel/2.jpg');"></div>
-			<div class="item"
-				style="background-image: url('/resources/img/intro-carousel/3.jpg');"></div>
-			<div class="item"
-				style="background-image: url('/resources/img/intro-carousel/4.jpg');"></div>
-			<div class="item"
-				style="background-image: url('/resources/img/intro-carousel/5.jpg');"></div>
-		</div>
-
 	</section>
-	<!-- #intro -->
-
-	<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
 	<!-- JavaScript Libraries -->
 	<script src="<c:url value="/resources/lib/jquery/jquery.min.js" />"></script>
