@@ -35,7 +35,7 @@
 					<li class="liforte">${cuentaSelec.usuario.nombre}
 						${cuentaSelec.usuario.apellido}</li>
 					<li><a class="dropdown"
-						href="perfil?id=${cuentaSelec.usuario.id}">Ver Perfil</a></li>
+						href="perfil?idCuenta=${cuentaSelec.id}&idUser=${cuentaSelec.usuario.id}">Ver Perfil</a></li>
 					<li class="dropdown"><a href="#" data-toggle="dropdown"
 						class="dropdown-toggle">Operaciones</a>
 						<ul class="dropdown-menu">
@@ -60,13 +60,13 @@
 				</table>
 				<br>
 				<div class="oper">
-					<form method="post" action="operativa">
+					<form method="post" action="operativa" name="extraerForm">
 						<strong>Cantidad: </strong>   
-						<input class="textbox" name="cantidad" class="input search-input" type="text"
-							placeholder="Introduzca una cantidad" size="300" id="numeroNegativo" onkeypress="return numerosNegativos(event);"><strong>  €</strong><br><br> 
+						<input class="textbox" name="cantidad" type="number" maxlength="22" size="30" max="-0.01" step=".01" required="required" placeholder="Introduzca una cantidad" >
+						<strong>  €</strong><br><br> 
 						<input type="hidden" name="idCuenta" value="${cuentaSelec.id}" />
 						<input type="hidden" name="operativa" value="extraer" />
-						<button type="submit" class="btn" value="Extraer">Extraer</button>
+						<button type="submit" class="btn" value="Extraer" onclick="return numerosNegativos(event);">Extraer</button>
 					</form>
 				</div>
 				<div class="fot">

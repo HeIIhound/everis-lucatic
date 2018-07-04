@@ -65,50 +65,76 @@ function pageButtons($pCount,$cur) {
 }
 
 
-//function valida(e){
-//    tecla = (document.all) ? e.keyCode : e.which;
+////VALIDACION DE USUARIOLOGIN
+//function checkForm(form)
+//{
+//  // validation fails if the input is blank
+//  if(form.user.value == "") {
+//    alert("Error: Input is empty!");
+//    form.user.focus();
+//    return false;
+//  }
 //
-//    //Tecla de retroceso para borrar, siempre la permite
-//    if (tecla==8){
-//    	 alert("debe ser un valor ");
-//        return true;
-//       
-//    }
-//        
-//    // Patron de entrada, en este caso solo acepta numeros
-//    patron =/[0-9]/;
-//    tecla_final = String.fromCharCode(tecla);
-//   
-//    return patron.test(tecla_final);
+//  // regular expression to match only alphanumeric characters and spaces
+//  var re = /^[\w ]+$/;
+//
+//  // validation fails if the input doesn't match our regular expression
+//  if(!re.test(form.user.value)) {
+//    alert("Error: Input contains invalid characters!");
+//    form.user.focus();
+//    return false;
+//  }
+//
+//  // validation was successful
+//  return true;
+//}
+//
+//function checkForm(form)
+//{
+//  if(!condition1) {
+//     alert("Error: error message");
+//     form.user.focus();
+//     return false;
+//  }
+//  if(!condition2) {
+//     alert("Error: error message");
+//     form.user.focus();
+//     return false;
+//  }
+//  return true;
 //}
 
 
-function numerosNegativos(e)
-{
-    // capturamos la tecla pulsada
-    var teclaPulsada=window.event ? window.event.keyCode:e.which;
 
-    // capturamos el contenido del input
-    var valor=document.getElementById("numeroNegativo").value;
 
-    // 45 = tecla simbolo menos (-)
-    // Si el usuario pulsa la tecla menos, y no se ha pulsado anteriormente
-    // Modificamos el contenido del mismo añadiendo el simbolo menos al
-    // inicio
-    if(teclaPulsada==45 && valor.indexOf("+")==-1)
-    {
-        document.getElementById("numeroNegativo").value="+"+valor;
-    }
 
-    // 13 = tecla enter
-    // 46 = tecla punto (.)
-    // Si el usuario pulsa la tecla enter o el punto y no hay ningun otro
-    // punto
-    if(teclaPulsada==13 || (teclaPulsada==46 && valor.indexOf(".")==-1))
-    {
-        return true;
-    }
-
-    // devolvemos true o false dependiendo de si es numerico o no
-    return /\d/.test(String.fromCharCode(teclaPulsada));
-}
+//function numerosNegativos(e){ 
+//	
+//	if (document.extraerForm.cantidad.value>0){ 
+//		alert("Debe introducir un número negativo") 
+//		return false;
+//	}
+//	
+//   	if (document.extraerForm.cantidad.value==0){ 
+//      	alert("Introduzca un cantidad a extraer") 
+//      	return false; 
+//   	} 
+//   	
+//   	document.extraerForm.submit(); 
+//}
+//
+//
+//function numerosPositivos(e){ 
+//	
+//	if (document.ingresarForm.cantidad.value<0){ 
+//		alert("Debe introducir un número positivo") 
+//		return false;
+//	}
+//	
+//   	if (document.ingresarForm.cantidad.value==0){ 
+//      	alert("Introduzca un cantidad a ingresar") 
+//      	return false; 
+//   	} 
+//   	
+//	document.extraerForm.submit(); 
+//}

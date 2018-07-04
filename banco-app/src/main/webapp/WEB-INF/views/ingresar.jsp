@@ -35,7 +35,7 @@
 					<li class="liforte">${cuentaSelec.usuario.nombre}
 						${cuentaSelec.usuario.apellido}</li>
 					<li><a class="dropdown"
-						href="perfil?id=${cuentaSelec.usuario.id}">Ver Perfil</a></li>
+						href="perfil?idCuenta=${cuentaSelec.id}&idUser=${cuentaSelec.usuario.id}">Ver Perfil</a></li>
 					<li class="dropdown"><a href="#" data-toggle="dropdown"
 						class="dropdown-toggle">Operaciones</a>
 						<ul class="dropdown-menu">
@@ -60,13 +60,13 @@
 				</table>
 				<br>
 				<div class="oper">
-					<form method="post" action="operativa" onsubmit="validarFormulario()">
+					<form method="post" action="operativa" name="ingresarForm">
 						<strong>Cantidad: </strong>   
-						<input class="textbox" name="cantidad" class="input search-input" type="text"
-							placeholder="Introduzca una cantidad" size="100" id="numeroPositivo" onkeypress="return numerosPositivos(event);"><strong>  €</strong><br><br> 
+						<input class="textbox" name="cantidad" type="number" maxlength="22" size="30" min="0.01" step=".01" required="required" placeholder="Introduzca una cantidad">
+						<strong>  €</strong><br><br> 
 						<input type="hidden" name="idCuenta" value="${cuentaSelec.id}" />
 						<input type="hidden" name="operativa" value="ingresar" />
-						<button type="submit" class="btn" value="Ingresar">Ingresar</button>
+						<button type="submit" class="btn" value="Ingresar una cantidad" >Ingresar</button>
 					</form>
 					
 				</div>

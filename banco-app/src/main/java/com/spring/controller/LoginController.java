@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,15 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.spring.dao.*;
 import com.spring.model.*;
+import com.spring.services.IBancoServices;
 
 @Controller
 public class LoginController {
-
+	/**
+	 * 
+	 */
 	@Autowired
-	private UsuarioDAO IUsuarioDAO;
-
+	private IBancoServices BancoServices;
+	
 	@RequestMapping("/")
 	public String handleRequest() throws Exception {
 		return "login";
@@ -32,17 +32,17 @@ public class LoginController {
 		int resultado = numero * 2;
 		return resultado;
 	}
-
+	
 	// Especificacion para el @ModelAttribute
 	@ModelAttribute("Usuariologin")
 	public Usuariologin modelAttribute() {
 		return new Usuariologin();
 	}
-
+	
 	@RequestMapping(value = "/inicio", method = RequestMethod.POST)
 	public ModelAndView inicio(@ModelAttribute Usuariologin user) throws Exception {
-		if (IUsuarioDAO.comprobarUsuario(user) == true) {
-			Usuario cliente = IUsuarioDAO.buscarCliente(IUsuarioDAO.buscarUsuario(user));
+		if (BancoServices.comprobarUsuario(user) == true) {
+			Usuario cliente = BancoServices.buscarCliente(BancoServices.buscarUsuario(user));
 			ModelAndView model = new ModelAndView("inicio");
 			model.addObject("cliente", cliente);
 			return model;
@@ -54,7 +54,7 @@ public class LoginController {
 
 	@RequestMapping(value = "/cuenta", method = RequestMethod.GET)
 	public ModelAndView cuentas(HttpServletRequest request) throws Exception {
-		Cuenta cuentaSelec = IUsuarioDAO.buscarCuentaSeleccionada(Integer.parseInt(request.getParameter("idCuenta")));
+		Cuenta cuentaSelec = BancoServices.buscarCuentaSeleccionada(Integer.parseInt(request.getParameter("idCuenta")));
 		ModelAndView model = new ModelAndView("cuenta");
 		model.addObject("cuentaSelec", cuentaSelec);
 		return model;
@@ -63,7 +63,7 @@ public class LoginController {
 	@RequestMapping(value = "/perfil", method = RequestMethod.GET)
 	public ModelAndView perfil(HttpServletRequest request) throws Exception {
 		int idCuenta = Integer.parseInt(request.getParameter("idCuenta"));
-		Usuario clienteSelec = IUsuarioDAO.buscarClienteSeleccionado(Integer.parseInt(request.getParameter("idUser")));
+		Usuario clienteSelec = BancoServices.buscarClienteSeleccionado(Integer.parseInt(request.getParameter("idUser")));
 		ModelAndView model = new ModelAndView("perfil");
 		model.addObject("idCuenta", idCuenta);
 		model.addObject("clienteSelec", clienteSelec);
@@ -72,8 +72,8 @@ public class LoginController {
 
 	@RequestMapping(value = "/movimientos", method = RequestMethod.GET)
 	public ModelAndView movimientos(HttpServletRequest request) throws Exception {
-		Cuenta cuentaSelec = IUsuarioDAO.buscarCuentaSeleccionada(Integer.parseInt(request.getParameter("idCuenta")));
-		boolean valor = IUsuarioDAO.comprobarMovimientos(cuentaSelec);
+		Cuenta cuentaSelec = BancoServices.buscarCuentaSeleccionada(Integer.parseInt(request.getParameter("idCuenta")));
+		boolean valor = BancoServices.comprobarMovimientos(cuentaSelec);
 		
 		//Nos convierte el set en list
 		List<Movimiento> listamov = new ArrayList<Movimiento>(cuentaSelec.getMovimientos());
@@ -82,10 +82,10 @@ public class LoginController {
 		Collections.sort(listamov, new Comparator<Movimiento>(){
 			@Override
 			public int compare(Movimiento o1, Movimiento o2) {
-				return o1.getId().compareTo(o2.getId());
+				return -o1.getId().compareTo(o2.getId());
 			}						
 		});
-		
+
 		ModelAndView model = new ModelAndView("movimientos");
 		model.addObject("cuentaSelec", cuentaSelec);
 		model.addObject("valor", valor);
@@ -95,7 +95,7 @@ public class LoginController {
 
 	@RequestMapping(value = "/ingresar", method = RequestMethod.GET)
 	public ModelAndView ingresar(HttpServletRequest request) throws Exception {
-		Cuenta cuentaSelec = IUsuarioDAO.buscarCuentaSeleccionada(Integer.parseInt(request.getParameter("idCuenta")));
+		Cuenta cuentaSelec = BancoServices.buscarCuentaSeleccionada(Integer.parseInt(request.getParameter("idCuenta")));
 		ModelAndView model = new ModelAndView("ingresar");
 		model.addObject("cuentaSelec", cuentaSelec);
 		return model;
@@ -103,7 +103,7 @@ public class LoginController {
 
 	@RequestMapping(value = "/extraer", method = RequestMethod.GET)
 	public ModelAndView extraer(HttpServletRequest request) throws Exception {
-		Cuenta cuentaSelec = IUsuarioDAO.buscarCuentaSeleccionada(Integer.parseInt(request.getParameter("idCuenta")));
+		Cuenta cuentaSelec = BancoServices.buscarCuentaSeleccionada(Integer.parseInt(request.getParameter("idCuenta")));
 		ModelAndView model = new ModelAndView("extraer");
 		model.addObject("cuentaSelec", cuentaSelec);
 		return model;
@@ -111,7 +111,7 @@ public class LoginController {
 
 	@RequestMapping(value = "/volver", method = RequestMethod.GET)
 	public ModelAndView volver(HttpServletRequest request) throws Exception {
-		Usuario cliente = IUsuarioDAO.buscarClienteSeleccionado(Integer.parseInt(request.getParameter("idUser")));
+		Usuario cliente = BancoServices.buscarClienteSeleccionado(Integer.parseInt(request.getParameter("idUser")));
 		ModelAndView model = new ModelAndView("inicio");
 		model.addObject("cliente", cliente);
 		return model;
@@ -119,7 +119,7 @@ public class LoginController {
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public ModelAndView logout(HttpServletRequest request) throws Exception {
-		IUsuarioDAO.registrarAcceso(request.getParameter("idUser"));
+		BancoServices.registrarAcceso(request.getParameter("idUser"));
 		ModelAndView model = new ModelAndView("login");
 		return model;
 	}
@@ -129,7 +129,7 @@ public class LoginController {
 		String cantidad = request.getParameter("cantidad");
 		int idCuenta = Integer.parseInt(request.getParameter("idCuenta"));
 		String operativa = request.getParameter("operativa");
-		Cuenta cuentaSelec = IUsuarioDAO.operativa(idCuenta, cantidad, operativa);
+		Cuenta cuentaSelec = BancoServices.operativa(idCuenta, cantidad, operativa);
 		ModelAndView model = new ModelAndView(operativa);
 		model.addObject("cuentaSelec", cuentaSelec);
 		return model;

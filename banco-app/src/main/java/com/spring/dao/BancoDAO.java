@@ -2,14 +2,10 @@ package com.spring.dao;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
-
+import javax.swing.JOptionPane;
 import javax.transaction.Transactional;
-
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,21 +15,21 @@ import com.spring.model.*;
 
 
 @Repository // Indica que es un DAO, tiene efecto sobre la transaccionalidad automática
-public class UsuarioDAO {
+public class BancoDAO implements IBancoDAO{
 
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	public UsuarioDAO() {
+	public BancoDAO() {
 
 	}
 
-	public UsuarioDAO(SessionFactory sessionFactory) {
+	public BancoDAO(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 
 	@Transactional
-	public Boolean comprobarUsuario(Usuariologin User) {
+	public boolean comprobarUsuario(Usuariologin User) {
 		Query query = sessionFactory.getCurrentSession().createQuery(
 				"from Usuariologin where user ='" + User.getUser() + "' AND pass='" + User.getPass() + "'");
 		@SuppressWarnings("unchecked")
@@ -96,23 +92,11 @@ public class UsuarioDAO {
 		Cuenta CuentaSelec = (Cuenta) query.uniqueResult();
 		BigDecimal saldo = CuentaSelec.getSaldo();
 		BigDecimal cantidadBD =new BigDecimal(cantidad);
-		BigDecimal res = null;
-		if(operativa.equals("extraer")) {
-			res = saldo.subtract(cantidadBD);//realiza la resta 
-		}else if (operativa.equals("ingresar")) {
-			res = saldo.add(cantidadBD);//realiza la suma 
-		} 
+		BigDecimal res = saldo.add(cantidadBD);  //Realiza la suma. Cuendo sea una extraccion, suma un numero negativo +(-1)
 		CuentaSelec.setSaldo(res);
 		sessionFactory.getCurrentSession().saveOrUpdate(CuentaSelec);
 		registrarMovimiento(CuentaSelec, cantidadBD, operativa);
 		return CuentaSelec;
-	}
-	
-	@Transactional
-	public void registrarAcceso(String idUser) {
-		Usuariologin UserSelec = (Usuariologin) sessionFactory.getCurrentSession().createQuery("from Usuariologin where idUser ='" + idUser + "'").uniqueResult();
-		UserSelec.setUltimoAcceso(new Date());
-		sessionFactory.getCurrentSession().saveOrUpdate(UserSelec);
 	}
 	
 	@Transactional
@@ -124,6 +108,14 @@ public class UsuarioDAO {
 		registroMovimiento.setCantidad(cantidad);
 		registroMovimiento.setTipoOperacion(operacion);
 		sessionFactory.getCurrentSession().save(registroMovimiento);
+		JOptionPane.showMessageDialog(null, "Los datos han sido guardados con éxito!");
+	}
+	
+	@Transactional
+	public void registrarAcceso(String idUser) {
+		Usuariologin UserSelec = (Usuariologin) sessionFactory.getCurrentSession().createQuery("from Usuariologin where idUser ='" + idUser + "'").uniqueResult();
+		UserSelec.setUltimoAcceso(new Date());
+		sessionFactory.getCurrentSession().saveOrUpdate(UserSelec);
 	}
 		
 }
