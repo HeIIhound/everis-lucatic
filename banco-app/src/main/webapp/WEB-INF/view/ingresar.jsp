@@ -90,7 +90,7 @@
 				<!-- 				todo -->
 				<br/><form action="operacion">
 				<strong>Cantidad:</strong>
-				<input type="number" name="saldo" min="1" />€<br/>
+				<input type="number" name="saldo" min="0.01" required="required" step=".01"/>€<br/>
 				<input type="hidden" name="idUsuario" value="${usuario.id}" />
 				<input type="hidden" name="idCuenta" value="${cuenta.id}" />
 				<input type="submit" value="Ingresar" style="margin-top: 20px;"/>
