@@ -52,9 +52,9 @@
 
 			<div id="logo" class="pull-left">
 				<h1>
-					<a href="#body" class="scrollto"><img
+					<a class="scrollto"><img
 						src="<c:url value="/resources/banco-inversis.png" />"
-						width="300" height="125" style="padding-bottom: 60px;"></a>
+						width="300" height="122" style="padding-bottom: 60px;"></a>
 				</h1>
 			</div>
 

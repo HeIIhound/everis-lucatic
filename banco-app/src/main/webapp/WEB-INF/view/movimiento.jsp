@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page isELIgnored="false"%>
-<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page isELIgnored="false" contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -38,9 +37,16 @@
 	href="<c:url value="/resources/lib/ionicons/css/ionicons.min.css" />"
 	rel="stylesheet">
 
+<link href="">
 <!-- Main Stylesheet File -->
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
 
+<!-- DataTables -->
+
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="<c:url value="/resources/dataTable.js"/>"></script>	
+	<!-- DataTables -->
 </head>
 
 <body id="body">
@@ -53,24 +59,28 @@
 
 			<div id="logo" class="pull-left">
 				<h1>
-					<a href="#body" class="scrollto"><img
-						src="<c:url value="/resources/banco-inversis.png" />"
-						width="300" height="125" style="padding-bottom: 60px;"></a>
+					<a class="scrollto"><img
+						src="<c:url value="/resources/banco-inversis.png" />" width="300"
+						height="122" style="padding-bottom: 60px;"></a>
 				</h1>
-				<!-- Uncomment below if you prefer to use an image logo -->
-				<!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
 			</div>
 
 			<nav id="nav-menu-container">
 				<ul class="nav-menu">
 					<li class="menu-active"><a>Bienvenido: ${usuario.nombre}
 							${usuario.apellido}</a></li>
-					<li><a href="perfil?idUsuario=${usuario.id}&idCuenta=${cuenta.id}">Ver perfil</a></li>
+					<li><a
+						href="perfil?idUsuario=${usuario.id}&idCuenta=${cuenta.id}">Ver
+							perfil</a></li>
 					<li class="menu-has-children"><a>Operaciones</a>
 						<ul>
-							<li><a href="movimiento?idUsuario=${usuario.id}&idCuenta=${cuenta.id}">Ver Movimientos</a></li>
-							<li><a href="ingresar?idUsuario=${usuario.id}&idCuenta=${cuenta.id}">Ingresar</a></li>
-							<li><a href="extraer?idUsuario=${usuario.id}&idCuenta=${cuenta.id}">Extraer</a></li>
+							<li><a
+								href="movimiento?idUsuario=${usuario.id}&idCuenta=${cuenta.id}">Ver
+									Movimientos</a></li>
+							<li><a
+								href="ingresar?idUsuario=${usuario.id}&idCuenta=${cuenta.id}">Ingresar</a></li>
+							<li><a
+								href="extraer?idUsuario=${usuario.id}&idCuenta=${cuenta.id}">Extraer</a></li>
 						</ul></li>
 					<li><a href="login">Salir</a></li>
 				</ul>
@@ -89,46 +99,42 @@
 				<h2 style="font-size: 45px; padding-top: 25px;">Movimientos de
 					Cuenta:</h2>
 
-				<strong style="padding-right: 700px;">${cuenta.numCuenta}</strong> <strong>${cuenta.saldo}</strong>
-				<!-- 				todo -->
+				<strong style="padding-right: 700px;">${cuenta.numCuenta}</strong> <strong>${cuenta.saldo}€</strong>
 				<div class="table-responsive" style="padding-top: 10px;">
 
-
-					<table id="mytable" class="table table-bordred table-striped">
+					<table id="tabla" class="table table-striped table-bordered">
 
 						<thead>
 							<tr>
-							<th> Fecha</th>
-							<th>Hora</th>
-							<th>Cantidad</th>
-							<th>Operacion</th>
-							</tr>	
+								<th>Fecha</th>
+								<th>Hora</th>
+								<th>Cantidad</th>
+							</tr>
 						</thead>
 						<tbody>
-
-							<tr>
 								<c:forEach items="${movimiento}" var="movimiento">
-										<tr><td>${movimiento.fechaOperacion}</td> <td>${movimiento.cantidad}</td><td>${movimiento.tipoOperacion}</td></tr>
-										</c:forEach>
-							</tr>
-
-
+									<tr>
+										<td>${movimiento.fechaOperacion}</td>
+										<td>${movimiento.cantidad}</td>
+										<td>${movimiento.tipoOperacion}</td>
+									</tr>
+								</c:forEach>
 						</tbody>
 
 					</table>
 
-					<div class="clearfix"></div>
-					<a href="gestion?idUsuario=${usuario.id}&idCuenta=${cuenta.id}" style="padding-top: 25px;">Volver</a>
+					<a href="gestion?idUsuario=${usuario.id}&idCuenta=${cuenta.id}"
+						style="padding-top: 25px;">Volver</a>
 				</div>
-				<!-- 				todo -->
 			</div>
 		</div>
 
 	</section>
 
-	<!-- JavaScript Libraries -->
 	
-	<script src="<c:url value="/resources/lib/jquery/jquery.min.js" />"></script>
+<!-- 	con esta linea no funciona dataTables -->
+	<%-- 	<script src="<c:url value="/resources/lib/jquery/jquery.min.js" />"></script> --%>
+	<!-- JavaScript Libraries -->
 	<script
 		src="<c:url value="/resources/lib/jquery/jquery-migrate.min.js" />"></script>
 	<script

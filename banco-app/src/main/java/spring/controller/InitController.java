@@ -15,7 +15,6 @@ import spring.services.IServicios;
 
 import java.math.BigDecimal;
 import java.util.Set;
-import java.util.TreeSet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.swing.JOptionPane;
@@ -160,9 +159,8 @@ public class InitController {
 
 		model.addObject("usuario", usuario);
 		model.addObject("cuenta", cuen);
-		Set<Movimiento> set = new TreeSet<>();
-		set = cuen.getMovimientos();
-		model.addObject("movimiento", set);
+		Set<Movimiento> mov = cuen.getMovimientos();
+		model.addObject("movimiento", mov);
 
 		return model;
 	}
@@ -209,6 +207,8 @@ public class InitController {
 			return model;
 		}
 
+		
+		
 	//operacion de ingresarOextraer y devuelve a la pagina correspondiente
 	@RequestMapping(value = "/operacion")
 		public ModelAndView operacion(HttpServletRequest request) {	

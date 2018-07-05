@@ -53,9 +53,9 @@
 
 			<div id="logo" class="pull-left">
 				<h1>
-					<a href="#body" class="scrollto"><img
+					<a class="scrollto"><img
 						src="<c:url value="/resources/banco-inversis.png" />"
-						width="300" height="125" style="padding-bottom: 60px;"></a>
+						width="300" height="122" style="padding-bottom: 60px;"></a>
 				</h1>
 			</div>
 
@@ -86,7 +86,7 @@
 
 		<div class="intro-content">
 			<div class="validate-input">
-				<h2 style="font-size: 45px; padding-top: 25px;">Ingresar en Cuenta:</h2> ${cuenta.numCuenta} <strong>${cuenta.saldo}</strong>
+				<h2 style="font-size: 45px; padding-top: 25px;">Ingresar en Cuenta:</h2> ${cuenta.numCuenta} <strong>${cuenta.saldo}€</strong>
 				<!-- 				todo -->
 				<br/><form action="operacion">
 				<strong>Cantidad:</strong>
@@ -103,7 +103,6 @@
 	</section>
 
 	<!-- JavaScript Libraries -->
-	
 	<script src="<c:url value="/resources/lib/jquery/jquery.min.js" />"></script>
 	<script
 		src="<c:url value="/resources/lib/jquery/jquery-migrate.min.js" />"></script>

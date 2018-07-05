@@ -53,12 +53,10 @@
 
 			<div id="logo" class="pull-left">
 				<h1>
-					<a href="#body" class="scrollto"><img
+					<a class="scrollto"><img
 						src="<c:url value="/resources/banco-inversis.png" />"
-						width="300" height="125" style="padding-bottom: 60px;"></a>
+						width="300" height="122" style="padding-bottom: 60px;"></a>
 				</h1>
-				<!-- Uncomment below if you prefer to use an image logo -->
-				<!-- <a href="#body"><img src="img/logo.png" alt="" title="" /></a>-->
 			</div>
 
 			<nav id="nav-menu-container">
@@ -88,7 +86,7 @@
 
 		<div class="intro-content">
 			<div class="validate-input">
-				<h2 style="font-size: 45px; padding-top: 25px;">Extraer de Cuenta:</h2> ${cuenta.numCuenta} <strong>${cuenta.saldo}</strong>
+				<h2 style="font-size: 45px; padding-top: 25px;">Extraer de Cuenta:</h2> ${cuenta.numCuenta} <strong>${cuenta.saldo}€</strong>
 				<!-- 				todo -->
 				<br/><form action="operacion">
 				<strong>Cantidad:</strong>
