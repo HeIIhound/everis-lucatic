@@ -106,7 +106,5 @@ public class Usuario implements java.io.Serializable {
 		return "Usuario [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni
 				+ ", usuariologins=" + usuariologins + ", cuentas=" + cuentas + "]";
 	}
-	
-	
 
 }

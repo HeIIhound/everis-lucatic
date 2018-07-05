@@ -48,7 +48,6 @@ public class ApplicationContextConfig extends WebMvcConfigurerAdapter {
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/banco");
 		dataSource.setUsername("root");
-
 		return dataSource;
 	}
 
@@ -68,7 +67,6 @@ public class ApplicationContextConfig extends WebMvcConfigurerAdapter {
 		sessionBuilder.addAnnotatedClasses(Movimiento.class);
 		sessionBuilder.addAnnotatedClasses(Usuario.class);
 		sessionBuilder.addAnnotatedClasses(Usuariologin.class);
-//		sessionBuilder.addAnnotatedClasses(UsuarioDAO.class);
 		return sessionBuilder.buildSessionFactory();
 	}
 
@@ -76,7 +74,6 @@ public class ApplicationContextConfig extends WebMvcConfigurerAdapter {
 	@Bean(name = "transactionManager")
 	public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
 		HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
-
 		return transactionManager;
 	}
 

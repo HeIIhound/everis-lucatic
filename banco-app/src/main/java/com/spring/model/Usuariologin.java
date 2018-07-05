@@ -35,7 +35,7 @@ public class Usuariologin implements java.io.Serializable {
 		this.user = user;
 		this.pass = pass;
 	}
-	
+
 	public Usuariologin(Usuario usuario, String user, String pass, Date ultimoAcceso) {
 		this.usuario = usuario;
 		this.user = user;
@@ -98,8 +98,5 @@ public class Usuariologin implements java.io.Serializable {
 		return "Usuariologin [id=" + id + ", usuario=" + usuario + ", user=" + user + ", pass=" + pass
 				+ ", ultimoAcceso=" + ultimoAcceso + "]";
 	}
-	
-	
 
-	
 }

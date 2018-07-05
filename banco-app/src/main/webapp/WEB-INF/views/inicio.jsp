@@ -1,9 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ page contentType="text/html; charset=UTF-8" %>
-<%@ page isELIgnored="false"%>
-<%--  Sin esta linea no me funcionaba el JSTL --%>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page isELIgnored="false"%><%--  Sin esta linea no me funcionaba el JSTL --%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +31,7 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					<li class="li">Bienvenido:</li>
-					<li class="liforte">${cliente.nombre}${cliente.apellido}</li>
+					<li class="liforte">${cliente.nombre}&nbsp${cliente.apellido}</li>
 					<li><a href="logout?idUser=${cliente.id}">Salir ></a></li>
 				</ul>
 			</div>
@@ -61,7 +60,6 @@
 
 	<script src="<c:url value="/resources/js/scripts.min.js" />"></script>
 	<script src="<c:url value="/resources/js/main.min.js" />"></script>
-	<script src="<c:url value="/resources/js/custom.js" />"></script>
 
 </body>
 

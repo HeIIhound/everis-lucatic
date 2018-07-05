@@ -8,27 +8,26 @@ import com.spring.model.Cuenta;
 import com.spring.model.Usuario;
 import com.spring.model.Usuariologin;
 
-
 public interface IBancoServices {
-	
+
 	boolean comprobarUsuario(Usuariologin User);
-	
+
 	Usuariologin buscarUsuario(Usuariologin User);
-	
+
 	Usuario buscarCliente(Usuariologin User);
-	
+
 	Usuario buscarClienteSeleccionado(int idUser);
-	
+
 	List<Cuenta> buscarCuenta(Usuariologin User);
-	
+
 	Cuenta buscarCuentaSeleccionada(int idCuenta);
-	
+
 	boolean comprobarMovimientos(Cuenta cuentaSelec);
-	
-	Cuenta operativa(int idCuenta, String cantidad, String operativa ) throws ParseException;
-	
+
+	Cuenta operativa(int idCuenta, String cantidad, String operativa) throws ParseException;
+
 	void registrarAcceso(String idUser);
-	
+
 	void registrarMovimiento(Cuenta CuentaSelec, BigDecimal cantidad, String operacion);
 
 }

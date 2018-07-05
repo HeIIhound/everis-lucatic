@@ -16,8 +16,8 @@ import com.spring.model.Usuariologin;
 
 @Service
 @Transactional
-public class BancoServices implements IBancoServices{
-	
+public class BancoServices implements IBancoServices {
+
 	@Autowired
 	private IBancoDAO BancoDAO;
 
@@ -64,15 +64,13 @@ public class BancoServices implements IBancoServices{
 	@Override
 	public void registrarAcceso(String idUser) {
 		BancoDAO.registrarAcceso(idUser);
-		
+
 	}
 
 	@Override
 	public void registrarMovimiento(Cuenta CuentaSelec, BigDecimal cantidad, String operacion) {
 		BancoDAO.registrarMovimiento(CuentaSelec, cantidad, operacion);
-		
+
 	}
-	
-	
 
 }

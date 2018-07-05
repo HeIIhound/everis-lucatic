@@ -124,10 +124,8 @@ public class Cuenta implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "Cuenta [id=" + id + ", usuario="  + ", numCuenta=" + numCuenta + ", nomBanco=" + nomBanco
-				+ ", saldo=" + saldo + ", fechaDeAlta=" + fechaDeAlta + ", movimientos=" + "]";
+		return "Cuenta [id=" + id + ", usuario=" + ", numCuenta=" + numCuenta + ", nomBanco=" + nomBanco + ", saldo="
+				+ saldo + ", fechaDeAlta=" + fechaDeAlta + ", movimientos=" + "]";
 	}
 
-	
-	
 }

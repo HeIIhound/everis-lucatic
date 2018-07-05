@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,28 +19,21 @@ import com.spring.services.IBancoServices;
 
 @Controller
 public class LoginController {
-	/**
-	 * 
-	 */
+
 	@Autowired
 	private IBancoServices BancoServices;
-	
-	@RequestMapping("/")
-	public String handleRequest() throws Exception {
-		return "login";
-	}
 
-	public int operacion(int numero) {
-		int resultado = numero * 2;
-		return resultado;
-	}
-	
 	// Especificacion para el @ModelAttribute
 	@ModelAttribute("Usuariologin")
 	public Usuariologin modelAttribute() {
 		return new Usuariologin();
 	}
 	
+	@RequestMapping("/")
+	public String handleRequest() throws Exception {
+		return "login";
+	}
+
 	@RequestMapping(value = "/inicio", method = RequestMethod.POST)
 	public ModelAndView inicio(@ModelAttribute Usuariologin user) throws Exception {
 		if (BancoServices.comprobarUsuario(user) == true) {
@@ -63,7 +58,8 @@ public class LoginController {
 	@RequestMapping(value = "/perfil", method = RequestMethod.GET)
 	public ModelAndView perfil(HttpServletRequest request) throws Exception {
 		int idCuenta = Integer.parseInt(request.getParameter("idCuenta"));
-		Usuario clienteSelec = BancoServices.buscarClienteSeleccionado(Integer.parseInt(request.getParameter("idUser")));
+		Usuario clienteSelec = BancoServices
+				.buscarClienteSeleccionado(Integer.parseInt(request.getParameter("idUser")));
 		ModelAndView model = new ModelAndView("perfil");
 		model.addObject("idCuenta", idCuenta);
 		model.addObject("clienteSelec", clienteSelec);
@@ -74,16 +70,16 @@ public class LoginController {
 	public ModelAndView movimientos(HttpServletRequest request) throws Exception {
 		Cuenta cuentaSelec = BancoServices.buscarCuentaSeleccionada(Integer.parseInt(request.getParameter("idCuenta")));
 		boolean valor = BancoServices.comprobarMovimientos(cuentaSelec);
-		
-		//Nos convierte el set en list
+
+		// Nos convierte el set en list
 		List<Movimiento> listamov = new ArrayList<Movimiento>(cuentaSelec.getMovimientos());
-		
-		//Nos ordena la lista de movimientos
-		Collections.sort(listamov, new Comparator<Movimiento>(){
+
+		// Nos ordena la lista de movimientos
+		Collections.sort(listamov, new Comparator<Movimiento>() {
 			@Override
 			public int compare(Movimiento o1, Movimiento o2) {
 				return -o1.getId().compareTo(o2.getId());
-			}						
+			}
 		});
 
 		ModelAndView model = new ModelAndView("movimientos");
@@ -117,13 +113,6 @@ public class LoginController {
 		return model;
 	}
 
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public ModelAndView logout(HttpServletRequest request) throws Exception {
-		BancoServices.registrarAcceso(request.getParameter("idUser"));
-		ModelAndView model = new ModelAndView("login");
-		return model;
-	}
-	
 	@RequestMapping(value = "/operativa", method = RequestMethod.POST)
 	public ModelAndView operativa(HttpServletRequest request) throws Exception {
 		String cantidad = request.getParameter("cantidad");
@@ -133,7 +122,13 @@ public class LoginController {
 		ModelAndView model = new ModelAndView(operativa);
 		model.addObject("cuentaSelec", cuentaSelec);
 		return model;
-		
 	}
 	
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public ModelAndView logout(HttpServletRequest request) throws Exception {
+		BancoServices.registrarAcceso(request.getParameter("idUser"));
+		ModelAndView model = new ModelAndView("login");
+		return model;
+	}
+
 }

@@ -2,7 +2,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <%@ page isELIgnored="false"%><%--  Sin esta linea no me funcionaba el JSTL --%>
 <!DOCTYPE html>
 <html lang="es">
@@ -25,9 +25,10 @@
 
 		<nav class="navbar navbar-default probootstrap-navbar">
 			<div class="container">
-				<a class="navbar-brand" href="volver?idUser=${cuentaSelec.usuario.id}">
-					<img src="<c:url value="/resources/images/inversis.png" />"
-					width="100%" height="auto">
+				<a class="navbar-brand"
+					href="volver?idUser=${cuentaSelec.usuario.id}"> <img
+					src="<c:url value="/resources/images/inversis.png" />" width="100%"
+					height="auto">
 				</a>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -35,14 +36,17 @@
 					<li class="liforte">${cuentaSelec.usuario.nombre}
 						${cuentaSelec.usuario.apellido}</li>
 					<li><a class="dropdown"
-						href="perfil?idCuenta=${cuentaSelec.id}&idUser=${cuentaSelec.usuario.id}">Ver Perfil</a></li>
+						href="perfil?idCuenta=${cuentaSelec.id}&idUser=${cuentaSelec.usuario.id}">Ver
+							Perfil</a></li>
 					<li class="dropdown"><a href="#" data-toggle="dropdown"
 						class="dropdown-toggle">Operaciones</a>
 						<ul class="dropdown-menu">
-							<li><a href="movimientos?idCuenta=${cuentaSelec.id}">Ver Movimientos</a></li>
+							<li><a href="movimientos?idCuenta=${cuentaSelec.id}">Ver
+									Movimientos</a></li>
 							<li><a href="extraer?idCuenta=${cuentaSelec.id}">Extraer</a></li>
 						</ul></li>
-					<li><a href="logout?idUser=${cuentaSelec.usuario.id}">Salir ></a></li>
+					<li><a href="logout?idUser=${cuentaSelec.usuario.id}">Salir
+							></a></li>
 				</ul>
 			</div>
 		</nav>
@@ -61,17 +65,19 @@
 				<br>
 				<div class="oper">
 					<form method="post" action="operativa" name="ingresarForm">
-						<strong>Cantidad: </strong>   
-						<input class="textbox" name="cantidad" type="number" maxlength="22" size="30" min="0.01" step=".01" required="required" placeholder="Introduzca una cantidad">
-						<strong>  €</strong><br><br> 
-						<input type="hidden" name="idCuenta" value="${cuentaSelec.id}" />
-						<input type="hidden" name="operativa" value="ingresar" />
-						<button type="submit" class="btn" value="Ingresar una cantidad" >Ingresar</button>
+						<strong>Cantidad: </strong> <input class="textbox" name="cantidad"
+							type="number" maxlength="22" size="30" min="0.01" step=".01"
+							required="required" placeholder="Introduzca una cantidad">
+						<strong> €</strong><br>
+						<br> <input type="hidden" name="idCuenta"
+							value="${cuentaSelec.id}" /> <input type="hidden"
+							name="operativa" value="ingresar" />
+						<button type="submit" class="btn" value="Ingresar una cantidad">Ingresar</button>
 					</form>
-					
+
 				</div>
 				<div class="fot">
-				<a class="btn" href="cuenta?idCuenta=${cuentaSelec.id}">Volver</a>
+					<a class="btn" href="cuenta?idCuenta=${cuentaSelec.id}">Volver</a>
 				</div>
 			</div>
 		</section>
@@ -82,7 +88,6 @@
 
 	<script src="<c:url value="/resources/js/scripts.min.js" />"></script>
 	<script src="<c:url value="/resources/js/main.min.js" />"></script>
-	<script src="<c:url value="/resources/js/pagination.js" />"></script>
 
 </body>
 </html>

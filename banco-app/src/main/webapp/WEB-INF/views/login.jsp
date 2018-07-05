@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,32 +8,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- <link -->
-<%-- 	href="<c:url value="/resources/vendor/bootstrap/css/bootstrap.min.css" />" --%>
-<!-- 	rel="stylesheet"> -->
 <link
 	href="<c:url value="/resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css" />"
 	rel="stylesheet">
 <link
 	href="<c:url value="/resources/fonts/iconic/css/material-design-iconic-font.min.css" />"
 	rel="stylesheet">
-<%-- <link href="<c:url value="/resources/vendor/animate/animate.css" />" --%>
-<!-- 	rel="stylesheet"> -->
-<!-- <link -->
-<%-- 	href="<c:url value="/resources/vendor/css-hamburgers/hamburgers.min.css" />" --%>
-<!-- 	rel="stylesheet"> -->
-<link
-	href="<c:url value="/resources/vendor/animsition/css/animsition.min.css" />"
-	rel="stylesheet">
-<link href="<c:url value="/resources/vendor/select2/select2.min.css" />"
-	rel="stylesheet">
-<link
-	href="<c:url value="/resources/vendor/daterangepicker/daterangepicker.css" />"
-	rel="stylesheet">
+
 <link href="<c:url value="/resources/css/util.css" />" rel="stylesheet">
+
 <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
 
-<!--===============================================================================================-->
 </head>
 <body>
 
@@ -41,8 +26,9 @@
 		<div class="container-login100"
 			style="background-image: url('resources/images/fondo.jpg');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
-				<form:form class="login100-form validate-form" method="post" name="form"
-					action="inicio" modelAttribute="Usuariologin" onsubmit="return checkForm(this);">
+				<form:form class="login100-form validate-form" method="post"
+					name="form" action="inicio" modelAttribute="Usuariologin"
+					onsubmit="return checkForm(this);">
 					<span class="login100-form-title p-b-10"> Inicio de sesión </span>
 					<span class="container-login10011"
 						style="background-image: url('resources/images/inversisa.png');"></span>
@@ -75,28 +61,8 @@
 		</div>
 	</div>
 
-
-	<div id="dropDownSelect1"></div>
-
-	<script
-		src="<c:url value="/resources/vendor/jquery/jquery-3.2.1.min.js" />"></script>
-	<script
-		src="<c:url value="/resources/vendor/animsition/js/animsition.min.js" />"></script>
-	<script
-		src="<c:url value="/resources/vendor/bootstrap/js/popper.js" />"></script>
-	<script
-		src="<c:url value="/resources/vendor/bootstrap/js/bootstrap.min.js" />"></script>
-	<script
-		src="<c:url value="/resources/vendor/select2/select2.min.js" />"></script>
-	<script
-		src="<c:url value="/resources/vendor/daterangepicker/moment.min.js" />"></script>
-	<script
-		src="<c:url value="/resources/vendor/daterangepicker/daterangepicker.js" />"></script>
-	<script
-		src="<c:url value="/resources/vendor/countdowntime/countdowntime.js" />"></script>
+	<script src="<c:url value="/resources/js/jquery-3.2.1.min.js" />"></script>
 	<script src="<c:url value="/resources/js/main.js" />"></script>
-	<script src="<c:url value="/resources/js/pagination.js" />"></script>
-
 
 </body>
 </html>
